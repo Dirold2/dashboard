@@ -12,7 +12,6 @@ export const {
   trustHost: true,
   session: { strategy: 'jwt' },
   adapter: PrismaAdapter(prisma),
-  secret: process.env.NEXTAUTH_SECRET,
 
   ...authConfig,
 });
