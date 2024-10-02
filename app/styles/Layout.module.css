@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    padding-bottom: 39px;
+    min-height: calc(100vh - 60px);
+}
+
+.main {
+    min-height: 78vh;
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        min-height: 79vh;
+    }
+    .content {
+        padding-bottom: 20px;
+        min-height: calc(100vh - 0px);
+    }
+}

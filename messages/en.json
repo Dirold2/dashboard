@@ -1,0 +1,85 @@
+{
+  "Account": {
+    "loading": "Loading",
+    "welcome": "Welcome"
+  },
+  "Index": {
+    "title": "Hello World!"
+  },
+  "Menu": {
+    "category": {
+      "ADVENS": "ADVENS",
+      "Settings": "Settings"
+    },
+    "title": {
+      "Account": "Account",
+      "Home": "Home",
+      "Login": "Login",
+      "News": "News",
+      "Registration": "Registration",
+      "Settings": "Settings"
+    }
+  },
+  "Search": {
+    "Search": "Search..."
+  },
+  "Tooltip": {
+    "Login": "Login",
+    "Test": "Test",
+    "Tooltip": "Tooltip on top",
+    "TooltipHV": "Hover over me"
+  },
+  "Login": {
+    "Login": "Login",
+    "Register": "Register",
+    "LogOut": "Logout",
+    "Password": "Password",
+    "Username": "User name",
+    "ConfirmPassword": "Confirm password",
+    "EmailAddress": "Email address"
+  },
+  "Error": {
+    "back": "Back",
+    "error": "Error",
+    "Emailinvalid": "Email address is invalid",
+    "Logininvalid": "Login already exists",
+    "Passwordlong": "Password must be at least 8 characters long",
+    "Passwordsmatch": "Passwords do not match",
+    "TemailAlredy": "Email address is already in use",
+    "TryAgain": "Error, please try again",
+    "Unexpected_error": "An unexpected error has occurred.",
+    "Occurred_error": "An error has occurred.",
+    "OperationCompletedSuccessfully": "Operation completed successfully",
+    "InvalidCredentials": "Invalid credentials.",
+    "AuthenticationError": "Incorrect login or password.",
+    "UnexpectedError": "An unexpected error occurred.",
+    "NoErrorsInAuthentication": "Authentication process completed without errors."
+  },
+  "Data": {
+    "jan": "Jan",
+    "feb": "Feb",
+    "mar": "Mar",
+    "apr": "Apr",
+    "may": "May",
+    "jun": "Jun",
+    "jul": "Jul",
+    "aug": "Aug",
+    "sep": "Sep",
+    "oct": "Oct",
+    "nov": "Nov",
+    "dec": "Dec"
+  },
+  "Lang": {
+    "english": "English",
+    "russian": "Russian"
+  },
+  "discord": "Discord",
+  "steam": "Steam",
+  "background-color-transitionduration-ease-0": "background-color {0} ease",
+  "repeat-auto-fill-minmax-cols-px-1fr-0": "repeat(auto-fill, minmax({0}px, 1fr))",
+  "media-min-width-breakpoint-px": "@media (min-width: {0}px)",
+  "repeat-auto-fill-minmax-cols-px-1fr": "repeat(auto-fill, minmax({0}px, 1fr))",
+  "repeat-cols-1fr": "repeat({0}, 1fr)",
+  "background-color-transitionduration-ease": "background-color {0} ease",
+  "usetooltip-must-be-used-within-a-tooltipprovider": "useTooltip must be used within a TooltipProvider"
+}

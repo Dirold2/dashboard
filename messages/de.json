@@ -1,0 +1,71 @@
+{
+  "Account": {
+    "loading": "Loading",
+    "welcome": "Welcome"
+  },
+  "Index": {
+    "title": "Hello World!"
+  },
+  "Menu": {
+    "category": {
+      "ADVENS": "ADVENS",
+      "Settings": "Settings"
+    },
+    "title": {
+      "Account": "Account",
+      "Home": "Home",
+      "Login": "Login",
+      "News": "News",
+      "Registration": "Registration",
+      "Settings": "Settings"
+    }
+  },
+  "Search": {
+    "Search": "Search..."
+  },
+  "Tooltip": {
+    "Login": "Login",
+    "Test": "Test",
+    "Tooltip": "Tooltip on top",
+    "TooltipHV": "Hover over me"
+  },
+  "Login": {
+    "Login": "Login",
+    "Register": "Register",
+    "LogOut": "Logout",
+    "Password": "Password",
+    "Username": "User name",
+    "ConfirmPassword": "Confirm password",
+    "EmailAddress": "Email address"
+  },
+  "Error": {
+    "back": "Back",
+    "error": "Error",
+    "Emailinvalid": "Email address is invalid",
+    "Logininvalid": "Login already exists",
+    "Passwordlong": "Password must be at least 8 characters long",
+    "Passwordsmatch": "Passwords do not match",
+    "TemailAlredy": "Email address is already in use",
+    "TryAgain": "Error, please try again",
+    "Unexpected_error": "Ein unerwarteter Fehler ist aufgetreten.",
+    "Occurred_error": "Ein Fehler ist aufgetreten."
+  },
+  "Data": {
+    "jan": "Jan",
+    "feb": "Feb",
+    "mar": "Mar",
+    "apr": "Apr",
+    "may": "May",
+    "jun": "Jun",
+    "jul": "Jul",
+    "aug": "Aug",
+    "sep": "Sep",
+    "oct": "Oct",
+    "nov": "Nov",
+    "dec": "Dec"
+  },
+  "Lang": {
+    "english": "English",
+    "russian": "Russian"
+  }
+}

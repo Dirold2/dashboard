@@ -1,0 +1,54 @@
+{
+  "name": "redhead",
+  "version": "0.2.1",
+  "private": true,
+  "description": "A web application for gaming platform",
+  "keywords": [
+    "gaming",
+    "platform",
+    "nextjs"
+  ],
+  "author": "<i@dirold.ru>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dirold2/redhead.git"
+  },
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev --turbo",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "^2.5.3",
+    "@next/eslint-plugin-next": "^14.2.14",
+    "@prisma/client": "^5.20.0",
+    "@vercel/postgres": "^0.10.0",
+    "bootstrap-icons": "^1.11.3",
+    "cookies-next": "^4.2.1",
+    "next": "15.0.0-rc.0",
+    "next-auth": "5.0.0-beta.22",
+    "next-intl": "^3.20.0",
+    "react": "19.0.0-rc-f994737d14-20240522",
+    "react-calendar": "^5.0.0",
+    "react-dom": "19.0.0-rc-f994737d14-20240522",
+    "sharp": "^0.33.5",
+    "tslog": "^4.9.3",
+    "yup": "^1.4.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.0",
+    "eslint": "^9.11.1",
+    "eslint-config-next": "14.2.14",
+    "prisma": "^5.20.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.8.0"
+  }
+}

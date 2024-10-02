@@ -1,0 +1,59 @@
+.colors {
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.colors input[type='color'] {
+  position: relative;
+  width: 13rem;
+  height: 6rem;
+  padding: 0;
+  border: none;
+  appearance: none;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+}
+
+.colors input[type='color']::after {
+  content: attr(data-hex);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit;
+  opacity: 0.5;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--color);
+  border-radius: var(--border-radius);
+}
+
+.colorPicker {
+  display: flex;
+  align-items: center;
+}
+.colorInput {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: none;
+  appearance: none;
+  cursor: pointer;
+}
+.colorHash {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.ItemStyle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

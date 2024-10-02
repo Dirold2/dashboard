@@ -1,0 +1,76 @@
+{
+  "Account": {
+    "loading": "Загрузка",
+    "welcome": "Добро пожаловать"
+  },
+  "Index": {
+    "title": "Привет, мир!"
+  },
+  "Menu": {
+    "category": {
+      "ADVENS": "ADVENS",
+      "Settings": "Настройки"
+    },
+    "title": {
+      "Account": "Аккаунт",
+      "Home": "Главная",
+      "Login": "Вход",
+      "News": "Новости",
+      "Registration": "Регистрация",
+      "Settings": "Настройки"
+    }
+  },
+  "Search": {
+    "Search": "Поиск..."
+  },
+  "Tooltip": {
+    "Login": "Вход",
+    "Test": "Тест",
+    "Tooltip": "Подсказка сверху",
+    "TooltipHV": "Наведи курсор на меня"
+  },
+  "Login": {
+    "Login": "Вход",
+    "Register": "Регистрация",
+    "LogOut": "Выход",
+    "Password": "Пароль",
+    "Username": "Имя пользователя",
+    "ConfirmPassword": "Повторите пароль",
+    "EmailAddress": "Почта"
+  },
+  "Error": {
+    "back": "Назад",
+    "error": "Ошибка",
+    "Emailinvalid": "Неверный адрес электронной почты",
+    "Logininvalid": "Логин уже существует",
+    "Passwordlong": "Пароль должен содержать не менее 8 символов",
+    "Passwordsmatch": "Пароли не совпадают",
+    "TemailAlredy": "Адрес электронной почты уже используется",
+    "TryAgain": "Ошибка, попробуйте еще раз",
+    "Unexpected_error": "Произошла неожиданная ошибка.",
+    "Occurred_error": "Произошла ошибка.",
+    "OperationCompletedSuccessfully": "Операция успешно завершена",
+    "InvalidCredentials": "Неверные учетные данные.",
+    "AuthenticationError": "Неверный логин или пароль.",
+    "UnexpectedError": "Произошла непредвиденная ошибка.",
+    "NoErrorsInAuthentication": "Процесс аутентификации завершен без ошибок."
+  },
+  "Data": {
+    "jan": "Янв",
+    "feb": "Фев",
+    "mar": "Мар",
+    "apr": "Апр",
+    "may": "Май",
+    "jun": "Июн",
+    "jul": "Июл",
+    "aug": "Авг",
+    "sep": "Сен",
+    "oct": "Окт",
+    "nov": "Ноя",
+    "dec": "Дек"
+  },
+  "Lang": {
+    "english": "Английский",
+    "russian": "Русский"
+  }
+}
