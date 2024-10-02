@@ -1,9 +1,14 @@
 'use client';
 
-import { ReactNode, CSSProperties } from 'react';
+import { ReactNode, CSSProperties, useMemo } from 'react';
 
 type ResponsiveCols = {
-  [key: string]: number;
+  [breakpoint: string]: number;
+};
+
+// Расширяем CSSProperties для поддержки медиа-запросов
+type ExtendedCSSProperties = React.CSSProperties & {
+  [key: string]: React.CSSProperties | string | number;
 };
 
 type GridProps = {
@@ -13,11 +18,6 @@ type GridProps = {
   gap?: string;
   flow?: 'row' | 'column';
   responsiveCols?: ResponsiveCols;
-  xs?: number;
-  sm?: number;
-  md?: number;
-  lg?: number;
-  xl?: number;
   transitionDuration?: string;
 };
 
@@ -31,11 +31,6 @@ type GridProps = {
  * @param {string} [props.gap='20px'] - Расстояние между элементами сетки.
  * @param {'row' | 'column'} [props.flow='row'] - Поток расположения элементов.
  * @param {ResponsiveCols} [props.responsiveCols={}] - Набор адаптивных стилей для различных разрешений.
- * @param {number} [props.xs] - Количество колонок для самого маленького разрешения.
- * @param {number} [props.sm] - Количество колонок для маленького разрешения.
- * @param {number} [props.md] - Количество колонок для среднего разрешения.
- * @param {number} [props.lg] - Количество колонок для большого разрешения.
- * @param {number} [props.xl] - Количество колонок для самого большого разрешения.
  * @param {string} [props.transitionDuration='0.3s'] - Длительность перехода при изменении стилей.
  *
  * @returns {JSX.Element} Элемент сетки с заданными стилями и содержимым.
@@ -46,37 +41,39 @@ export const Grid = ({
   cols = 100,
   gap = '20px',
   flow = 'row',
-  xs,
-  sm,
-  md,
-  lg,
-  xl,
+  responsiveCols = {},
   transitionDuration = '0.3s',
 }: GridProps): JSX.Element => {
-  const gridStyle: CSSProperties & Record<string, unknown> = {
-    display: 'grid',
-    gap,
-    gridAutoFlow: flow,
-    justifyContent: 'stretch',
-    alignItems: 'stretch',
-    transition: `background-color ${transitionDuration} ease`,
-  };
-
-  if (gridType === 'fixed') {
-    gridStyle.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-  } else {
-    gridStyle.gridTemplateColumns = `repeat(auto-fill, minmax(${cols}px, 1fr))`;
-  }
-
-  // Адаптивные колонки
-  Object.entries({ xs, sm, md, lg, xl }).forEach(([breakpoint, cols]) => {
-    gridStyle[`@media (minWidth: ${breakpoint}px)`] = {
-      gridTemplateColumns: `repeat(auto-fill, minmax(${cols}px, 1fr))`,
+  // Использование useMemo для мемоизации стилей
+  const gridStyle = useMemo((): ExtendedCSSProperties => {
+    const baseStyle: ExtendedCSSProperties = {
+      display: 'grid',
+      gap,
+      gridAutoFlow: flow,
+      justifyContent: 'stretch',
+      alignItems: 'stretch',
+      transition: `all ${transitionDuration} ease`,
     };
-  });
+
+    if (gridType === 'fixed') {
+      baseStyle.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    } else {
+      baseStyle.gridTemplateColumns = `repeat(auto-fill, minmax(${cols}px, 1fr))`;
+    }
+
+    // Адаптивные колонки
+    Object.entries(responsiveCols).forEach(([breakpoint, value]) => {
+      baseStyle[`@media (min-width: ${breakpoint}px)`] = {
+        gridTemplateColumns: `repeat(${value}, 1fr)`,
+      };
+    });
+
+    return baseStyle;
+  }, [gridType, cols, gap, flow, responsiveCols, transitionDuration]);
 
   return <div style={gridStyle}>{children}</div>;
 };
+
 
 type SpanProps = {
   col?: number;
@@ -89,14 +86,10 @@ type ItemProps = {
   bgColor?: string;
   padding?: string;
   textAlign?: 'left' | 'center' | 'right';
-  flexDirection?: `row` | `row-reverse` | `column` | `column-reverse`,
+  flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
   borderRadius?: string;
   transitionDuration?: string;
-  onFocusBgColor?: string;
-  onActiveBgColor?: string;
-  onHoverBgColor?: string;
 };
-
 
 /**
  * Компонент `Item` создает элемент сетки с возможностью настройки стилей.
@@ -109,9 +102,6 @@ type ItemProps = {
  * @param {'left' | 'center' | 'right'} [props.textAlign='center'] - Выравнивание текста внутри элемента сетки.
  * @param {string} [props.borderRadius='var(--border-radius)'] - Радиус скругления границ элемента сетки.
  * @param {string} [props.transitionDuration='0.3s'] - Длительность перехода при изменении стилей.
- * @param {'column' | 'column-reverse' | 'row' | 'row-reverse'} [props.flexDirection='row'] - Направление элементов внутри элемента сетки.
- * @param {'flex-start' | 'center' | 'flex-end'} [props.alignItems='center'] - Выравнивание элементов внутри элемента сетки по вертикали.
- * @param {'flex-start' | 'center' | 'flex-end'} [props.justifyContent='center'] - Выравнивание элементов внутри элемента сетки по горизонтали.
  *
  * @returns {JSX.Element} Элемент сетки с заданными стилями и содержимым.
  */
@@ -125,11 +115,12 @@ export const Item = ({
   borderRadius = 'var(--border-radius)',
   transitionDuration = '0.3s',
 }: ItemProps): JSX.Element => {
-  const ItemStyle: CSSProperties = {
+  // Использование useMemo для оптимизации стилей элемента
+  const itemStyle = useMemo((): CSSProperties => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: flexDirection || 'row',
+    flexDirection,
     flexWrap: 'wrap',
     backgroundColor: bgColor || 'var(--background-after)',
     padding,
@@ -139,12 +130,10 @@ export const Item = ({
     gridRow: span?.row ? `span ${span.row}` : 'auto',
     transition: `background-color ${transitionDuration} ease`,
     outline: 'none',
-  };
+  }), [span, bgColor, padding, textAlign, flexDirection, borderRadius, transitionDuration]);
 
   return (
-    <span
-      style={ItemStyle}
-    >
+    <span style={itemStyle}>
       {children}
     </span>
   );

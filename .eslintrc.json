@@ -1,5 +1,10 @@
 {
   "extends": ["next/core-web-vitals", "next/typescript"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020,
+    "useEslintrc": false
+  },
   "ignorePatterns": [
     "**/ecosystem.config.js"
   ]

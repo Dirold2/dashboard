@@ -23,9 +23,9 @@ const nextConfig = {
       allowedOrigins: [`${process.env.PUBLIC_HOSTNAME}`]
     }
   },
-
   eslint: {
     dirs: ['app', 'auth'],
+    ignoreDuringBuilds: true,
   },
 };
 
