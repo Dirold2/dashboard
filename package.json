@@ -1,6 +1,6 @@
 {
-  "name": "dashboard",
-  "version": "0.2.2.2",
+  "name": "ragu_dashboard",
+  "version": "0.2.2.3",
   "private": true,
   "description": "A web application for gaming platform",
   "keywords": [
