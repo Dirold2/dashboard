@@ -106,8 +106,3 @@ next-env.d.ts
 
 # TernJS port file
 .tern-port
-
-# TypeScript Node.js project files
-tsconfig.json
-tsconfig.dev.json
-tsconfig.prod.json

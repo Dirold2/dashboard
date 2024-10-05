@@ -1,0 +1,75 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@cmp/*": [
+        "app/[locale]/Component/*"
+      ],
+      "@ui/*": [
+        "app/[locale]/UI/*"
+      ],
+      "@styles/*": [
+        "./app/styles/*"
+      ],
+      ".auth/*": [
+        "./auth/*"
+      ],
+      "@lang/*": [
+        "./lang/*"
+      ],
+      "@lib/*":[
+        "app/lib/*"
+      ],
+      "@dictionaries": [
+        "./app/[locale]/[lang]/dictionaries.ts"
+      ],
+      "@api/*": [
+        "./app/[locale]/(pages)/api/*"
+      ],
+      "@db/*": [
+        "./db/*"
+      ],
+      "@config": [
+        "./config.ts"
+      ],
+      "@PrismaSingleton": [
+        "./auth/cmp/funtion/PrismaSingleton.ts"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "types/next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "./config.ts",
+    "types/**/*.d.ts",
+    "next.config.mjs"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
