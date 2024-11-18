@@ -50,6 +50,9 @@
         "@config": [
           "./config.ts"
         ],
+        "@types": [
+          "./types/main.ts"
+        ],
         "@PrismaSingleton": [
           "./auth/cmp/funtion/PrismaSingleton.ts"
         ]

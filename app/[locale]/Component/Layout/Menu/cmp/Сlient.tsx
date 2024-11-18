@@ -8,9 +8,9 @@ import { useTranslations } from 'next-intl';
 // Components
 import Link from 'next/link';
 import { Range } from '@cmp/Layout/Menu';
-import { NavigationItem, navigation } from '@config';
+import type { NavigationItem } from '@types';
+import { navigation, siteTitle } from '@config';
 import styles from '../style/menu.module.css';
-import { siteTitle } from '@config';
 import { JSX } from 'react/jsx-runtime';
 
 export { Link, usePathname, styles, navigation, siteTitle, Range };

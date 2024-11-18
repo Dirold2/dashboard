@@ -6,8 +6,10 @@ import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { getCookie } from '@cmp/Utils';
 
+import type { NavigationItem } from '@types';
+
 // Components
-import { navigation, NavigationItem } from '@config';
+import { navigation } from '@config';
 import { Range } from '@cmp/Layout/Menu';
 import styles from '../style/menuMobile.module.css';
 import styless from '@styles/other.module.css';
