@@ -19,6 +19,11 @@ function LanguageSwitcher(): JSX.Element {
         </Link>
       </button>
       <button>
+        <Link href={`/de${path}`} locale="de">
+          {t('german')}
+        </Link>
+      </button>
+      <button>
         <Link href={`/ru${path}`} locale="ru">
           {t('russian')}
         </Link>

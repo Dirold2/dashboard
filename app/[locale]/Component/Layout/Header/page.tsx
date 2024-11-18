@@ -5,6 +5,8 @@ import styles from './style/header.module.css';
 import SearchInput from './cmp/SearchInput';
 import SearchResults from './cmp/SearchResults';
 import { JSX } from 'react/jsx-runtime';
+import 'dotenv/config'
+require('dotenv').config()
 
 // interface UserData {
 //   first_name: string;
@@ -29,7 +31,7 @@ function Header(): JSX.Element {
       }
       try {
         const response = await fetch(
-          `${process.env.PUBLIC_HOSTNAME}api/account/all`,
+          `/api/account/all`,
         );
         const data = await response.json();
         // const searchTermWords = searchTerm.trim().toLowerCase().split(/\s+/);

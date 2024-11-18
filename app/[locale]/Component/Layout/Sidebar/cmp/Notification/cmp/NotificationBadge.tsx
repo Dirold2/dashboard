@@ -1,4 +1,5 @@
 import styles from '@styles/other.module.css';
+import { JSX } from 'react/jsx-runtime';
 
 type NotificationBadgeProps = {
   count: number;

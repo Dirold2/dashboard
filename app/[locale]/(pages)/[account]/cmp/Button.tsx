@@ -5,6 +5,8 @@ import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { JSX } from 'react/jsx-runtime';
+import 'dotenv/config'
+require('dotenv').config()
 
 function Order(): JSX.Element {
   const { data: session, status } = useSession();

@@ -17,7 +17,7 @@ import { JSX } from 'react/jsx-runtime';
 const MemoizedProfile = React.memo(Profile);
 const MemoizedProfilePrisma = React.memo(ProfilePrisma);
 
-function Page({ params }: { params: { account: string } }): JSX.Element {
+async function Page({ params }: { params: Promise<{ account: string }> }): Promise<JSX.Element> {
   const { data: session, status } = useSession();
   const pathname = usePathname();
   const path = getSecondPathPart(pathname);
@@ -45,7 +45,7 @@ function Page({ params }: { params: { account: string } }): JSX.Element {
             </Item>
           ) : (
             <Item>
-              <MemoizedProfilePrisma params={params} />
+              <MemoizedProfilePrisma params={await params} />
             </Item>
           )}
 

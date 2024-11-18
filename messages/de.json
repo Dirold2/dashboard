@@ -1,71 +1,86 @@
 {
   "Account": {
-    "loading": "Loading",
-    "welcome": "Welcome"
+    "loading": "Laden",
+    "welcome": "Willkommen"
   },
   "Index": {
-    "title": "Hello World!"
+    "title": "Hallo Welt!"
   },
   "Menu": {
     "category": {
       "ADVENS": "ADVENS",
-      "Settings": "Settings"
+      "Settings": "Einstellungen"
     },
     "title": {
-      "Account": "Account",
-      "Home": "Home",
-      "Login": "Login",
-      "News": "News",
-      "Registration": "Registration",
-      "Settings": "Settings"
+      "Account": "Konto",
+      "Home": "Zuhause",
+      "Login": "Anmelden",
+      "News": "Nachrichten",
+      "Registration": "Registrierung",
+      "Settings": "Einstellungen"
     }
   },
   "Search": {
-    "Search": "Search..."
+    "Search": "Suche..."
   },
   "Tooltip": {
-    "Login": "Login",
+    "Login": "Anmelden",
     "Test": "Test",
-    "Tooltip": "Tooltip on top",
-    "TooltipHV": "Hover over me"
+    "Tooltip": "Zuobern auf oben",
+    "TooltipHV": "Führen Sie den Mauszeiger über mich"
   },
   "Login": {
-    "Login": "Login",
-    "Register": "Register",
-    "LogOut": "Logout",
-    "Password": "Password",
-    "Username": "User name",
-    "ConfirmPassword": "Confirm password",
-    "EmailAddress": "Email address"
+    "Login": "Anmelden",
+    "Register": "Registrieren",
+    "LogOut": "Abmelden",
+    "Password": "Passwort",
+    "Username": "Benutzername",
+    "ConfirmPassword": "Passwort bestätigen",
+    "EmailAddress": "E-Mail-Adresse"
   },
   "Error": {
-    "back": "Back",
-    "error": "Error",
-    "Emailinvalid": "Email address is invalid",
-    "Logininvalid": "Login already exists",
-    "Passwordlong": "Password must be at least 8 characters long",
-    "Passwordsmatch": "Passwords do not match",
-    "TemailAlredy": "Email address is already in use",
-    "TryAgain": "Error, please try again",
+    "back": "Zurück",
+    "error": "Fehler",
+    "Emailinvalid": "Ungültige E-Mail-Adresse",
+    "Logininvalid": "Angemeldete Benutzer existiert bereits",
+    "Passwordlong": "Das Passwort muss mindestens 8 Zeichen lang sein",
+    "Passwordsmatch": "Die Passwörter stimmen nicht übereinander",
+    "TemailAlredy": "Die E-Mail-Adresse wird bereits verwendet",
+    "TryAgain": "Fehler, bitte nochmals versuchen",
     "Unexpected_error": "Ein unerwarteter Fehler ist aufgetreten.",
-    "Occurred_error": "Ein Fehler ist aufgetreten."
+    "Occurred_error": "Ein Fehler ist aufgetreten.",
+    "OperationCompletedSuccessfully": "Die Operation wurde erfolgreich abgeschlossen",
+    "InvalidCredentials": "Ungültige Anmeldeinformationen.",
+    "AuthenticationError": "Falsche Anmeldedaten oder Passwort.",
+    "UnexpectedError": "Ein unerwarteter Fehler ist aufgetreten.",
+    "NoErrorsInAuthentication": "Die Authentifizierungsprozess wurde ohne Fehler abgeschlossen."
   },
   "Data": {
     "jan": "Jan",
     "feb": "Feb",
     "mar": "Mar",
     "apr": "Apr",
-    "may": "May",
+    "may": "Mai",
     "jun": "Jun",
     "jul": "Jul",
     "aug": "Aug",
     "sep": "Sep",
-    "oct": "Oct",
+    "oct": "Okt",
     "nov": "Nov",
-    "dec": "Dec"
+    "dec": "Dez"
   },
   "Lang": {
-    "english": "English",
-    "russian": "Russian"
-  }
+    "english": "Englisch",
+    "german": "Deutsch",
+    "russian": "Russisch"
+  },
+  "discord": "Discord",
+  "steam": "Steam",
+  "background-color-transitionduration-ease-0": "Hintergrundfarbe {0} ease",
+  "repeat-auto-fill-minmax-cols-px-1fr-0": "repeat(auto-fill, minmax({0}px, 1fr))",
+  "media-min-width-breakpoint-px": "@media (min-width: {0}px)",
+  "repeat-auto-fill-minmax-cols-px-1fr": "repeat(auto-fill, minmax({0}px, 1fr))",
+  "repeat-cols-1fr": "repeat({0}, 1fr)",
+  "background-color-transitionduration-ease": "Hintergrundfarbe {0} ease",
+  "usetooltip-must-be-used-within-a-tooltipprovider": "useTooltip muss innerhalb eines TooltipProvider verwendet werden"
 }

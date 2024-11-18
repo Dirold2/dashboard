@@ -6,16 +6,16 @@ const logger = new Logger();
 
 export async function GET(
     request: Request,
-    { params }: { params: { name: string } },
+    { params }: { params: Promise<{ name: string }> },
 ): Promise<Response> {
-    if (!params || !params.name) {
+    if (!params || !(await params).name) {
         logger.error('params or params.name is undefined');
         return new Response(null, { status: 400, statusText: 'Bad Request' });
     }
 
     try {
         const userId = await prisma.user.findFirst({
-            where: { name: params.name },
+            where: { name: (await params).name },
             select: { id: true },
         });
 
