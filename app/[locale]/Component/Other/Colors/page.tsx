@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Item } from '@ui/Grid';
 import styles from './style/color.module.css';
+import { JSX } from 'react/jsx-runtime';
 
 interface Scheme {
   background: string;

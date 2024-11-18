@@ -1,15 +1,18 @@
 'use client';
 import styles from '@styles/other.module.css';
 import { VisibilityToggle } from '@ui/VisibilityToggle';
-import { useRef } from 'react';
+import { RefObject, useRef } from 'react';
 import { useSession } from 'next-auth/react';
 import { useNotification } from '@cmp/Context/NotificationContext';
 import NotificationIcon from './cmp/NotificationIcon';
 import NotificationBadge from './cmp/NotificationBadge';
+import { JSX } from 'react/jsx-runtime';
 
 export default function Notification(): JSX.Element {
   const blockRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+  const typedButtonRef = buttonRef as RefObject<HTMLDivElement>;
+  const typedBlockRef = blockRef as RefObject<HTMLDivElement>;
   const { status } = useSession();
   const {
     notifications,
@@ -23,7 +26,7 @@ export default function Notification(): JSX.Element {
 
   return (
     <div className={styles.sidebox}>
-      <VisibilityToggle buttonRef={buttonRef} blockRef={blockRef}>
+      <VisibilityToggle buttonRef={typedButtonRef} blockRef={typedBlockRef}>
         {({
           showBlock,
           showStyleBlock,

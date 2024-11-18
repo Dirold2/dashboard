@@ -5,6 +5,7 @@ import { Grid, Item } from '@ui/Grid';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import React from 'react';
+import { JSX } from 'react/jsx-runtime';
 
 function ClientComponent(): JSX.Element {
     const t = useTranslations(``);

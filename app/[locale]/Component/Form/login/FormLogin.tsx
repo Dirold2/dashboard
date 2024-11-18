@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { signIn } from 'next-auth/react';
 import { signInSchema } from '@lib/zod';
 import { ZodError } from 'zod';
+import { JSX } from 'react/jsx-runtime';
 
 type ValidationErrors = {
     name?: string;

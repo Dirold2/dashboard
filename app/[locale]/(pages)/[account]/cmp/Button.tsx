@@ -4,6 +4,7 @@ import { GithubAuthentication, DiscordAuthentication } from '@ui/Button';
 import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { JSX } from 'react/jsx-runtime';
 
 function Order(): JSX.Element {
   const { data: session, status } = useSession();
@@ -19,7 +20,7 @@ function Order(): JSX.Element {
     const fetchProviders = async (): Promise<void> => {
       if (status === 'authenticated') {
         try {
-          const response = await fetch(`${process.env.PUBLIC_HOSTNAME}/api/provider/${session.user.name}`);
+          const response = await fetch(`${process.env.PUBLIC_HOSTNAME}${session.user.name}`);
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }

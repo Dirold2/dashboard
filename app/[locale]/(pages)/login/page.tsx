@@ -4,6 +4,7 @@ import Client from './cmp/Client';
 import { useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
+import { JSX } from 'react/jsx-runtime';
 
 const Login = (): JSX.Element => {
   const { data: session } = useSession();

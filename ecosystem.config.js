@@ -1,6 +1,6 @@
 module.exports = {
     apps: [{
-        name: 'cuteworld',
+        name: 'dashboard',
         script: 'npm',
         args: 'run start',
         env: {

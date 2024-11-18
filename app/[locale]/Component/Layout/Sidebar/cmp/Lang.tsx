@@ -2,14 +2,17 @@
 
 import styles from '@styles/other.module.css';
 import { VisibilityToggle } from '@ui/VisibilityToggle';
-import { useRef } from 'react';
+import { RefObject, useRef } from 'react';
 import { LanguageSwitcher } from '@cmp/Other';
 import { useSession } from 'next-auth/react';
+import { JSX } from 'react/jsx-runtime';
 
 function Lang(): JSX.Element {
   const { status } = useSession();
   const blockRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+  const typedButtonRef = buttonRef as RefObject<HTMLDivElement>;
+  const typedBlockRef = blockRef as RefObject<HTMLDivElement>;
 
   if (status === 'loading') {
     return <aside className={styles.lang}></aside>;
@@ -17,7 +20,7 @@ function Lang(): JSX.Element {
 
   return (
     <div className={styles.sidebox}>
-      <VisibilityToggle buttonRef={buttonRef} blockRef={blockRef}>
+      <VisibilityToggle buttonRef={typedButtonRef} blockRef={typedBlockRef}>
         {({
           showBlock,
           showStyleBlock,

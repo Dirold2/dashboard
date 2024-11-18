@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { useSession } from 'next-auth/react';
 import React, { useRef } from 'react';
 import { UAlertContainer, AlertContainerRef } from '@ui/UAlert';
+import { JSX } from 'react/jsx-runtime';
 
 const Page: React.FC = (): JSX.Element => {
   const { data: session } = useSession();

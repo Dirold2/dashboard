@@ -8,6 +8,7 @@ import { LangInput } from '@cmp/Lang';
 import { Button, Dates, Lang, Logo, Notification } from './cmp';
 import { useSession } from 'next-auth/react';
 import React from 'react';
+import { JSX } from 'react/jsx-runtime';
 
 function Sidebar(): JSX.Element {
   const {data: session} = useSession();

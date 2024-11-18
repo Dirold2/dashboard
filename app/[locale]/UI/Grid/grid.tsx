@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode, CSSProperties, useMemo } from 'react';
+import { JSX } from 'react/jsx-runtime';
 
 type ResponsiveCols = {
   [breakpoint: string]: number;

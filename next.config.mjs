@@ -20,12 +20,8 @@ const nextConfig = {
   webpack: (config) => config,
   experimental: {
     serverActions: {
-      allowedOrigins: [`${process.env.PUBLIC_HOSTNAME}`]
+      allowedOrigins: [`${process.env.PUBLIC_HOSTNAMES}`]
     }
-  },
-  eslint: {
-    dirs: ['app', 'auth'],
-    ignoreDuringBuilds: true,
   },
 };
 

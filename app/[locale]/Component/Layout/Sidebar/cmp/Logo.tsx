@@ -4,12 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from '@styles/other.module.css';
 import { VisibilityToggle } from '@ui/VisibilityToggle';
-import { useRef } from 'react';
+import { RefObject, useRef } from 'react';
 import { useSession } from 'next-auth/react';
 import { Session } from 'next-auth';
 import React from 'react';
 import { getPathPart } from '@cmp/Utils';
 import { usePathname } from 'next/navigation';
+import { JSX } from 'react/jsx-runtime';
 
 function get_user_image(session: Session | null): string {
   return session?.user?.image?.replace(/"/g, '') || `https://ui-avatars.com/api/?format=svg&name=${session?.user?.name}`;
@@ -21,6 +22,8 @@ function Logo(): JSX.Element {
   const { data: session, status } = useSession();
   const blockRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
+  const typedButtonRef = buttonRef as RefObject<HTMLDivElement>;
+  const typedBlockRef = blockRef as RefObject<HTMLDivElement>;
   const pathname = usePathname();
   const path = getPathPart(pathname);
   
@@ -32,7 +35,7 @@ function Logo(): JSX.Element {
 
   return (
     <div className={styles.sidebox}>
-      <MemoizedVisibilityToggle buttonRef={buttonRef} blockRef={blockRef}>
+      <MemoizedVisibilityToggle buttonRef={typedButtonRef} blockRef={typedBlockRef}>
         {({ showBlock, showStyleBlock, toggleBlockVisibility }) => (
           <aside
             ref={buttonRef}

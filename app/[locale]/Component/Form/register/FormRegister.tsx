@@ -6,6 +6,7 @@ import styles from './style/register.module.css';
 import { useTranslations } from "next-intl";
 import { UAlertContainer, AlertContainerRef } from '@ui/UAlert';
 import { getCookie } from "@cmp/Utils";
+import { JSX } from "react/jsx-runtime";
 
 export default function FormRegister(): JSX.Element {
     const t = useTranslations(``);

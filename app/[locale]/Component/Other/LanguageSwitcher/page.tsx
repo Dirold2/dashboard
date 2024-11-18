@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 import { getSecondPathPart } from '@cmp/Utils';
 import { Grid } from '@ui/Grid';
 import { useTranslations } from 'next-intl';
+import { JSX } from 'react/jsx-runtime';
 
 function LanguageSwitcher(): JSX.Element {
   const t = useTranslations('Lang');

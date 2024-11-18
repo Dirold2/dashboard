@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { JSX } from 'react/jsx-runtime'
  
 export default async function NotFound(): Promise<JSX.Element> {
   return (

@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import TooltipClient from './cmp/TooltipClient';
+import { JSX } from 'react/jsx-runtime';
 
 interface TooltipProps {
   content: string;

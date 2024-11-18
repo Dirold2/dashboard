@@ -12,7 +12,7 @@ export const localePrefix = undefined;
 
 export type AppPathnames = keyof typeof pathnames;
 
-export const siteTitle = 'CUTE WORLD';
+export const siteTitle = 'dashboard';
 
 export interface NavigationItem {
   title: string;
