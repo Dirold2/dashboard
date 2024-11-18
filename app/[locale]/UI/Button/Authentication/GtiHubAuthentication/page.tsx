@@ -1,4 +1,5 @@
 'use client';
+import { JSX } from 'react/jsx-runtime';
 import styles from '../../style/button.module.css';
 import { signIn } from 'next-auth/react';
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from '@ui/Grid';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { JSX } from 'react/jsx-runtime';
 
 const CustomError = (): JSX.Element => {
   const t = useTranslations(``);

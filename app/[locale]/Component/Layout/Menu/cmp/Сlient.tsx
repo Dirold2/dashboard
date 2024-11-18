@@ -11,7 +11,7 @@ import { Range } from '@cmp/Layout/Menu';
 import { NavigationItem, navigation } from '@config';
 import styles from '../style/menu.module.css';
 import { siteTitle } from '@config';
-import React from 'react';
+import { JSX } from 'react/jsx-runtime';
 
 export { Link, usePathname, styles, navigation, siteTitle, Range };
 

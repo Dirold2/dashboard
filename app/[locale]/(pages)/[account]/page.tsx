@@ -12,6 +12,7 @@ import { Grid, Item } from '@ui/Grid';
 import { getSecondPathPart } from '@cmp/Utils';
 import { NotificationButton, SignOutAuthentication } from '@ui/Button';
 import { Skeleton } from '@ui/Skeleton';
+import { JSX } from 'react/jsx-runtime';
 
 const MemoizedProfile = React.memo(Profile);
 const MemoizedProfilePrisma = React.memo(ProfilePrisma);

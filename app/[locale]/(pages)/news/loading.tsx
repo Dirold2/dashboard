@@ -9,7 +9,7 @@ interface LoadingProps {
 const Loading: React.FC<LoadingProps> = ({ count }) => {
   return (
     <main>
-      <Grid cols={200}>
+      <Grid cols={250}>
         {Array.from({ length: count }).map((_, index) => (
           <Item key={index}>
             <div className={ld.loader}>

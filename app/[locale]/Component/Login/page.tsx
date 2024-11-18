@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useTranslations } from 'next-intl';
+import { JSX } from 'react/jsx-runtime';
 
 function LoginForm(): JSX.Element {
   const [credentials, setCredentials] = useState({});

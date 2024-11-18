@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
+import { JSX } from 'react/jsx-runtime';
 
 export const metadata: Metadata = {
   title: 'About',

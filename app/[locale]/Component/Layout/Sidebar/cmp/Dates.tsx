@@ -4,8 +4,9 @@ import Calendar from 'react-calendar';
 import '../css/MyCustomCalendarStyles.css';
 import styles from '@styles/other.module.css';
 import { VisibilityToggle } from '@ui/VisibilityToggle';
-import { useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { JSX } from 'react/jsx-runtime';
 
 function Dates(): JSX.Element {
   const t = useTranslations('Data');
@@ -15,7 +16,9 @@ function Dates(): JSX.Element {
   const [year, setYear] = useState<number | null>(null);
   const blockRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
-
+  const typedButtonRef = buttonRef as RefObject<HTMLDivElement>;
+  const typedBlockRef = blockRef as RefObject<HTMLDivElement>;
+  
   useEffect(() => {
     const monthNames = [
       t('jan'), t('feb'), t('mar'), t('apr'), t('may'), t('jun'),
@@ -42,7 +45,7 @@ function Dates(): JSX.Element {
 
   return (
     <div className={styles.sidebox} style={{width: '100%'}}>
-      <VisibilityToggle buttonRef={buttonRef} blockRef={blockRef}>
+    <VisibilityToggle buttonRef={typedButtonRef} blockRef={typedBlockRef}>
         {({
           showBlock,
           showStyleBlock,

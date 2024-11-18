@@ -4,6 +4,7 @@ import { Skeleton } from '@ui/Skeleton';
 import { useRouter } from 'next/navigation';
 import { getCookie } from '@cmp/Utils';
 import React from 'react';
+import { JSX } from 'react/jsx-runtime';
 
 interface AccountData {
   name: string;

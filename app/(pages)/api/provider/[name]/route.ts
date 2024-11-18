@@ -4,10 +4,6 @@ import { prisma } from '@PrismaSingleton';
 export const dynamic = 'force-dynamic';
 const logger = new Logger();
 
-interface Account {
-    provider: string;
-}
-
 export async function GET(
     request: Request,
     { params }: { params: { name: string } },
@@ -33,7 +29,7 @@ export async function GET(
             select: { provider: true },
         });
 
-        return new Response(JSON.stringify(providers.map((item: Account) => item.provider)), {
+        return new Response(JSON.stringify(providers.map(item => item.provider)), {
             headers: { 'Content-Type': 'application/json' },
         });
     } catch (error) {

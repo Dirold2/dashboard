@@ -11,7 +11,7 @@ import Lang from './Lang';
 import Logo from './Logo';
 import { Notification } from './Notification';
 import { useSession } from 'next-auth/react';
-import React from 'react';
+import { JSX } from 'react/jsx-runtime';
 
 function SidebarClient(): JSX.Element {
   const {data: session} = useSession();

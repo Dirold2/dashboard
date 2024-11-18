@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import styles from '../style/tooltip.module.css';
+import { JSX } from 'react/jsx-runtime';
 
 interface TooltipProps {
     content: string;

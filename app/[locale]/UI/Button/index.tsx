@@ -7,3 +7,4 @@ export { SteamAuthentication } from './Authentication/SteamAuthentication';
 export { NotificationButton } from './NotificationButton';
 // Button
 export { default as Button } from './Button';
+export { DownloadButton } from './DownloadButton'

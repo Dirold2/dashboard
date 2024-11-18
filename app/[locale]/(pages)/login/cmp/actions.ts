@@ -11,5 +11,5 @@ interface Session {
 
 export async function create(name: string, session: Session): Promise<void> {
     const userName = session.user?.name?.toLowerCase();
-    cookies().set(name, userName || '');
+    (await cookies()).set(name, userName || '');
 }

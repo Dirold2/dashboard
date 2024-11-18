@@ -12,6 +12,7 @@ import { Range } from '@cmp/Layout/Menu';
 import styles from '../style/menuMobile.module.css';
 import styless from '@styles/other.module.css';
 import Link from 'next/link';
+import { JSX } from 'react/jsx-runtime';
 
 export const MenuMobile = (): JSX.Element => {
     const [active, setActive] = useState(false);

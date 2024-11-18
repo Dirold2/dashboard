@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
 import styles from '@styles/other.module.css';
+import { JSX } from 'react/jsx-runtime';
 
 function Button(): JSX.Element {
   const { status } = useSession();
