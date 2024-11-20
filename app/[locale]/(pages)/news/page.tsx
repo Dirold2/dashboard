@@ -28,7 +28,7 @@ export default async function NewsBlock() {
   const facts = await fetchFacts();
 
   return (
-    <main>
+    <main className='center'>
       <Grid cols={2}>
         {facts.map((fact, index) => (
           <Item key={index}>
