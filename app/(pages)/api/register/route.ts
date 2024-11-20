@@ -26,10 +26,8 @@ export async function POST(request: Request): Promise<Response> {
             },
         });
         
-        console.log(JSON.stringify({ email, name, hash }))
         return new Response(JSON.stringify({ email, name }), { status: 200 });
     } catch (error) {
-        console.error(error);
         return new Response("An error occurred during registration", { status: 500 });
     }
 }

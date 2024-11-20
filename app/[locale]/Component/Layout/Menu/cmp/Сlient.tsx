@@ -31,7 +31,7 @@ export const Menu = ({ locale }: { locale: string }): JSX.Element => {
         modifiedNavigation[loginIndex] = {
           title: `Account`,
           icon: 'bi bi-person-fill',
-          path: `/${session?.user?.name?.toLowerCase()}`,
+          path: `/${session?.user?.name}`,
           category: 'Settings',
         };
       }

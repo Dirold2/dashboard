@@ -1,4 +1,3 @@
-"use client";
 import { Tooltip } from '@ui/Tooltip';
 import { Grid, Item } from '@ui/Grid';
 import styles from '@styles/other.module.css';
@@ -6,12 +5,12 @@ import styles from '@styles/other.module.css';
 import { LangInput } from '@cmp/Lang';
 
 import { Button, Dates, Lang, Logo, Notification } from './cmp';
-import { useSession } from 'next-auth/react';
 import React from 'react';
 import { JSX } from 'react/jsx-runtime';
+import { auth } from '.auth/auth';
 
-function Sidebar(): JSX.Element {
-  const {data: session} = useSession();
+async function Sidebar(): Promise<JSX.Element> {
+  const session = await auth()
 
   const MemoizedNotification = React.memo(Notification);
   const MemoizedLogo = React.memo(Logo);
@@ -40,21 +39,21 @@ function Sidebar(): JSX.Element {
           </span>
         </Tooltip>
       </div>
-      <div className={styles.otherbox}>
-        <Grid>
-          <Tooltip content="Test" position="top">
-            <Item>1</Item>
-          </Tooltip>
-          <Tooltip content="Test" position="right">
-            <Item>2</Item>
-          </Tooltip>
-          <Tooltip content="Test" position="left">
-            <Item>3</Item>
-          </Tooltip>
-          <Tooltip content="Test" position="bottom">
-            <Item>4</Item>
-          </Tooltip>
-        </Grid>
+      <div className={`${styles.otherbox} center`}>
+          <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
+            <Tooltip content="1" position="top">
+              <Item style={{padding: `30px`, margin: `10px`}}>1</Item>
+            </Tooltip>
+            <Tooltip content="2" position="right">
+              <Item style={{padding: `30px`, margin: `10px`}}>2</Item>
+            </Tooltip>
+            <Tooltip content="3" position="left">
+              <Item style={{padding: `30px`, margin: `10px`}}>3</Item>
+            </Tooltip>
+            <Tooltip content="4" position="bottom">
+              <Item style={{padding: `30px`, margin: `10px`}}>4</Item>
+            </Tooltip>
+          </div>
       </div>
   </div>
 

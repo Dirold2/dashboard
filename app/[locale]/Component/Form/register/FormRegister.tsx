@@ -87,7 +87,6 @@ export default function FormRegister(): JSX.Element {
                     'error',
                     <span>{t("Error.TryAgain")}</span>,
                 );
-                console.log(error);
             }
         }
     };

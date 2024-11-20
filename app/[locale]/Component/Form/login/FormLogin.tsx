@@ -35,7 +35,6 @@ export default function FormLogin(): JSX.Element {
 
                 setErrors(formattedErrors);
             } else {
-                console.error('Sign in error:', error);
                 alert('An unexpected error occurred');
             }
         }

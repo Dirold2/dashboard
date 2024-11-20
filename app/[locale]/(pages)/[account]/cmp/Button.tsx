@@ -5,8 +5,7 @@ import { useSession } from 'next-auth/react';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { JSX } from 'react/jsx-runtime';
-import 'dotenv/config'
-require('dotenv').config()
+import { hostName } from '@config';
 
 function Order(): JSX.Element {
   const { data: session, status } = useSession();
@@ -22,14 +21,13 @@ function Order(): JSX.Element {
     const fetchProviders = async (): Promise<void> => {
       if (status === 'authenticated') {
         try {
-          const response = await fetch(`${process.env.PUBLIC_HOSTNAME}${session.user.name}`);
+          const response = await fetch(`${hostName}${session.user.name}`);
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
           const data = await response.json();
           setProviderState({ providers: data, isLoading: false });
         } catch (error) {
-          console.error('Fetch operation error:', error);
           setProviderState({ providers: [], isLoading: false });
         }
       } else {

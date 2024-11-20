@@ -1,6 +1,11 @@
 import React from 'react';
 import { Grid, Item } from '@ui/Grid';
 import ld from '@styles/loader.module.css';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'News',
+};
 
 interface LoadingProps {
   count: number;
@@ -9,7 +14,7 @@ interface LoadingProps {
 const Loading: React.FC<LoadingProps> = ({ count }) => {
   return (
     <main>
-      <Grid cols={250}>
+      <Grid cols={2}>
         {Array.from({ length: count }).map((_, index) => (
           <Item key={index}>
             <div className={ld.loader}>

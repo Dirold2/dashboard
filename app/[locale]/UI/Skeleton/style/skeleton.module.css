@@ -1,7 +1,6 @@
 /* @ui/Skeleton/style/skeleton.module.css */
 
 .skeleton {
-    background-color: var(--background-before);
     border-radius: var(--border-radius);
 }
 

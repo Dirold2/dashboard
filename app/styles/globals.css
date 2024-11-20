@@ -3,10 +3,11 @@
 
 :root {
   --background: #ffffff;
+  --background-back: #c7c7c7;
   --background-before: #dcdcdc;
   --background-after: #b4b4b4;
   --color: #32323c;
-  --colorHv: #adadad;
+  --colorHv: #d8d8d8;
   --border-radius: 12px;
   --other-margin: 40px 2rem 0px 2rem;
   --other-padding: 35px;
@@ -18,6 +19,7 @@
 
 .light-scheme {
   --background: #ffffff;
+  --background-back: #c7c7c7;
   --background-before: #dcdcdc;
   --background-after: #b4b4b4;
   --color: #32323c;
@@ -30,15 +32,17 @@
 
 .dark-scheme {
   --background: #1a1a1a;
+  --background-back: #333333;
   --background-before: #262626;
   --background-after: #666666;
-  --color: #adadad;
+  --color: #d8d8d8;
   --colorHv: #32323c;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: rgb(26, 26, 26);
+    --background-back: rgb(51, 51, 51);
     --background-before: rgb(38, 38, 38);
     --background-after: rgb(102, 102, 102);
     --color: #adadad;
@@ -59,10 +63,12 @@
 /* selection */
 ::selection {
   background: var(--color); /* Safari */
+  color: var(--colorHv);
 }
 
 ::-moz-selection {
   background: var(--color); /* Firefox */
+  color: var(--colorHv);
 }
 
 /* body */

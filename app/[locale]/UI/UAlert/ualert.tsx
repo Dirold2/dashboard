@@ -39,8 +39,6 @@ const UAlert: React.FC<UAlertProps> = ({
     setTimeout(() => onClose?.(), 1000);
   };
 
-  console.log(isVisible)
-
   // if (!isVisible) {
   //   return null;
   // }

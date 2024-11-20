@@ -1,65 +1,48 @@
-'use client';
-
-import React from 'react';
-import { useSession } from 'next-auth/react';
-import { usePathname } from 'next/navigation';
-
+import { Metadata } from 'next';
+import { SignOutAuthentication } from '@ui/Button';
+import { Grid, Item } from '@ui/Grid';
 import Order from './cmp/Button';
+import React from 'react';
 import Profile from './cmp/Profile';
 import ProfilePrisma from './cmp/ProfilePrisma';
-
-import { Grid, Item } from '@ui/Grid';
-import { getSecondPathPart } from '@cmp/Utils';
-import { NotificationButton, SignOutAuthentication } from '@ui/Button';
-import { Skeleton } from '@ui/Skeleton';
-import { JSX } from 'react/jsx-runtime';
+import { auth } from '.auth/auth';
+import { isUserPath } from './client';
 
 const MemoizedProfile = React.memo(Profile);
 const MemoizedProfilePrisma = React.memo(ProfilePrisma);
 
-async function Page({ params }: { params: Promise<{ account: string }> }): Promise<JSX.Element> {
-  const { data: session, status } = useSession();
-  const pathname = usePathname();
-  const path = getSecondPathPart(pathname);
+export const metadata: Metadata = {
+  title: 'Account',
+};
 
-  if (status === 'loading') {
-    return <main className={`center`}>
-      <div className="center">
-        <Skeleton width="50px" height="20px" />
-      </div>
-      <div>
-        <div>
-          <Skeleton width="100px" height="100px" />
-        </div>
-      </div>
-    </main>;
-  }
-
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ account: string }>;
+}) {
+  const session = await auth()
+  const account = (await params).account
+  // Передаем параметры на клиентскую сторону
   return (
-    <>
-      <main className={`center`}>
-        <Grid cols={200}>
-          {`/${session?.user.name}` === path? (
-            <Item>
-              <MemoizedProfile />
-            </Item>
+    <main className="center">
+      <Grid>
+        {/* Показываем профиль в зависимости от пути */}
+        <Item>
+          {isUserPath ? (
+            <MemoizedProfile />
           ) : (
-            <Item>
-              <MemoizedProfilePrisma params={await params} />
-            </Item>
+            <MemoizedProfilePrisma account={account} />
           )}
+        </Item>
 
-          {session && `/${session?.user.name}` === path && (
-            <Item>
-              <SignOutAuthentication />
-              <Order />
-              <NotificationButton />
-            </Item>
-          )}
-        </Grid>
-      </main>
-    </>
+        {/* Кнопки доступны только для авторизованного пользователя на его странице */}
+        {session && isUserPath && (
+          <Item>
+            <SignOutAuthentication />
+            <Order />
+          </Item>
+        )}
+      </Grid>
+    </main>
   );
 }
-
-export default Page;

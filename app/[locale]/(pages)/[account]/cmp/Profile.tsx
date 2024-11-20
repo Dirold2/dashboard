@@ -2,23 +2,14 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useSession } from 'next-auth/react';
-import React, { useRef } from 'react';
-import { UAlertContainer, AlertContainerRef } from '@ui/UAlert';
+import React from 'react';
 import { JSX } from 'react/jsx-runtime';
 
 const Page: React.FC = (): JSX.Element => {
   const { data: session } = useSession();
   const t = useTranslations('Account');
-  const alertContainerRef = useRef<AlertContainerRef | null>(null);
 
   const userImage = session?.user?.image?.replace(/"/g, '') || '';
-
-  const showAlert = (): void => {
-    alertContainerRef.current?.addAlert(
-      'error',
-      <span> Это новое сообщение</span>,
-    );
-  };
 
   return (
     <div>
@@ -36,9 +27,6 @@ const Page: React.FC = (): JSX.Element => {
           />
         </div>
       </div>
-      {/* Дополнительная информация о профиле, доступная только аутентифицированным пользователям */}
-      <button onClick={showAlert}>Показать новое сообщение</button>
-      <UAlertContainer ref={alertContainerRef} />
     </div>
   );
 }

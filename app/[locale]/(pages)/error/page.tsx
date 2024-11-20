@@ -3,6 +3,11 @@ import { Grid } from '@ui/Grid';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { JSX } from 'react/jsx-runtime';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Error',
+};
 
 const CustomError = (): JSX.Element => {
   const t = useTranslations(``);

@@ -1,23 +1,29 @@
-"use client";
-// import { create } from './cmp/actions';
-import Client from './cmp/Client';
-import { useEffect } from 'react';
-import { useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
-import { JSX } from 'react/jsx-runtime';
+// server.tsx
+import { auth } from ".auth/auth"
+import { redirect } from "next/navigation";
+import { JSX } from "react/jsx-runtime";
+import ClientLogin from "./client";
 
-const Login = (): JSX.Element => {
-  const { data: session } = useSession();
-  const lang = 'en';
-
-  useEffect(() => {
-    if (session?.user) {
-      // create('name', session);
-      redirect(`/${lang}/${session.user.name?.toLowerCase()}`);
-    }
-  }, [session]);
-
-  return <Client />;
+export const metadata = {
+  title: "Login",
 };
 
-export default Login;
+async function ServerLogin({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<JSX.Element> {
+  const session = await auth()
+
+  const { locale } = await params
+
+  if (session?.user) {
+    redirect(`/${locale}/${session.user.name}`);
+  }
+
+  return (
+    <ClientLogin />
+  );
+};
+
+export default ServerLogin;

@@ -29,7 +29,7 @@ function ClientComponent(): JSX.Element {
                 </div>
             </main>
             <main className="center">
-                <Grid flow="column" cols={200}>
+                <Grid flow="column">
                     <Item>
                         <GithubAuthentication />
                         <DiscordAuthentication />

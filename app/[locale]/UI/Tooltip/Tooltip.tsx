@@ -12,7 +12,14 @@ interface TooltipProps {
 
 const Tooltip: React.FC<TooltipProps> = (props) => {
   const t = useTranslations(`Tooltip`);
-  const translatedContent = t(props.content);
+  let translatedContent: string;
+
+  try {
+    translatedContent = t(props.content);
+  } catch {
+    // Если перевод отсутствует, используем оригинальный контент
+    translatedContent = props.content;
+  }
 
   return (
     <TooltipClient {...props} content={translatedContent} />

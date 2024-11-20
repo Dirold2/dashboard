@@ -30,7 +30,7 @@ export const metadata: {
     template: `${siteTitle} / %s`,
     default: `${siteTitle}`,
   },
-  description: 'First Site',
+  description: `${siteTitle}`,
 };
 
 const inter = Inter({

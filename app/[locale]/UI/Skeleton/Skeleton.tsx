@@ -9,6 +9,7 @@ interface SkeletonProps {
   circle?: boolean;
   pulse?: boolean;
   waveLines?: boolean;
+  backgroundColor?: string;
 }
 
 const Skeleton: React.FC<SkeletonProps> = ({
@@ -17,6 +18,7 @@ const Skeleton: React.FC<SkeletonProps> = ({
   circle = false,
   pulse = true,
   waveLines = true,
+  backgroundColor = 'var(--background-before)',
 }) => {
   const skeletonClass = circle ? styles.circle : styles.rectangle;
   const animationClassPulse = pulse ? styles.pulse : '';
@@ -25,7 +27,7 @@ const Skeleton: React.FC<SkeletonProps> = ({
   return (
     <div
       className={`${styles.skeleton} ${skeletonClass} ${animationClassPulse} ${animationClassWaveLines}`}
-      style={{ width, height }}
+      style={{ width, height, backgroundColor: backgroundColor }}
     />
   );
 };

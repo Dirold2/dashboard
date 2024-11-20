@@ -92,7 +92,7 @@ function Colors(): JSX.Element {
   return (
     <main className={`${styles.colors}`}>
       <div className={styles.ItemStyle}>
-        <Item span={{ row: 2 }} flexDirection={`column`}>
+        <Item rowSpan={2}>
           <label htmlFor="background" defaultValue="initial value">
             Background:
           </label>
@@ -110,7 +110,7 @@ function Colors(): JSX.Element {
         </Item>
       </div>
       <div className={styles.ItemStyle}>
-        <Item span={{ row: 2 }} flexDirection={`column`}>
+        <Item rowSpan={2}>
           <label htmlFor="backgroundBefore" defaultValue="initial value">
             Background Before
           </label>
@@ -128,7 +128,7 @@ function Colors(): JSX.Element {
         </Item>
       </div>
       <div className={styles.ItemStyle}>
-        <Item span={{ row: 2 }} flexDirection={`column`}>
+        <Item rowSpan={2}>
           <label htmlFor="secondaryColor" defaultValue="initial value">
             Background After
           </label>
@@ -146,7 +146,7 @@ function Colors(): JSX.Element {
         </Item>
       </div>
       <div className={styles.ItemStyle}>
-        <Item span={{ row: 2 }} flexDirection={`column`}>
+        <Item rowSpan={2}>
           <label htmlFor="color" defaultValue="initial value">
             Color:
           </label>

@@ -35,7 +35,7 @@ export const MenuMobile = (): JSX.Element => {
                 modifiedNavigation[loginIndex] = {
                     title: `Account`,
                     icon: 'bi bi-person-fill',
-                    path: `/${session?.user?.name?.toLowerCase()}`,
+                    path: `/${session?.user?.name}`,
                     category: 'Settings',
                 };
             }
@@ -69,7 +69,7 @@ export const MenuMobile = (): JSX.Element => {
                 </div>
             </div>
             <ul className={!active ? styles.menuUl : `${styles.menuUl} ${styles.active}`}>
-                <div onClick={handleClick} style={{ cursor: 'pointer', position: 'absolute', top: '0', left: '0' }}>
+                <div onClick={handleClick} style={{ cursor: 'pointer', position: 'absolute', border: `1px solid var(--background-after)`, borderRadius: 'var(--border-radius)' , top: '20px', left: '20px' }}>
                     <div className={styless.notificationbox}>
                         <div>
                             <aside className={!active ? `` : styles.active}>

@@ -54,7 +54,7 @@ function Header(): JSX.Element {
         setShowDropdown(!!data.length);
         setShowStyleDropdown(!!data.length);
       } catch (error) {
-        console.error('Error fetching search results:', error);
+        false
       }
     };
 

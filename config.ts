@@ -1,6 +1,7 @@
 import type { NavigationItem } from "@types";
 
 export const locales = ['en', 'de', 'ru'] as const;
+export const defaultLocale = 'en';
 
 export const navigation: NavigationItem[] = [
   { title: `Home`, icon: 'bi bi-house-fill', path: '', category: 'ADVENS' },
@@ -8,5 +9,7 @@ export const navigation: NavigationItem[] = [
   { title: `Login`, icon: 'bi bi-box-arrow-in-right', path: '/login', category: 'Settings' },
   { title: `Settings`, icon: 'bi bi-gear', path: '/settings', category: 'Settings' },
 ];
+
+export const hostName = `${process.env.PUBLIC_HOSTNAME}`;
 
 export const siteTitle = 'dashboard';

@@ -12,7 +12,7 @@ function LanguageSwitcher(): JSX.Element {
   const path = getSecondPathPart(pathname);
 
   return (
-    <Grid cols={70}>
+    <Grid>
       <button>
         <Link href={`/en${path}`} locale="en">
           {t('english')}

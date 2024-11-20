@@ -1,48 +1,49 @@
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { Skeleton } from '@ui/Skeleton';
-import { useRouter } from 'next/navigation';
-import { getCookie } from '@cmp/Utils';
-import React from 'react';
-import { JSX } from 'react/jsx-runtime';
-import 'dotenv/config'
-require('dotenv').config()
+"use client";
+
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Skeleton } from "@ui/Skeleton";
+import { useRouter } from "next/navigation";
+import { getCookie } from "@cmp/Utils";
+import { hostName } from "@config";
 
 interface AccountData {
   name: string;
   image: string;
 }
 
-function Page({ params }: { params: { account: string } }): JSX.Element {
-
-  const locale = getCookie('NEXT_LOCALE');
-
-  const [accountData, setAccountData] = useState<AccountData | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
+export default function Page({ account }: { account: string }) {
+  const locale = getCookie("NEXT_LOCALE");
   const router = useRouter();
 
+  const [accountData, setAccountData] = useState<AccountData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(false);
+
   useEffect(() => {
-    const fetchUserData = async (): Promise<void> => {
-      const host = `${process.env.PUBLIC_HOSTNAME}`;
+    const fetchUserData = async () => {
       setIsLoading(true);
+      setError(false);
       try {
-        const response = await fetch(`${host}/api/account/${params.account}`);
-        if (!response.ok) throw new Error('Network response was not ok');
+        const response = await fetch(`${hostName}/api/account/${account}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
         const data = await response.json();
         setAccountData(data);
-      } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
+      } catch {
+        setError(true);
         router.push(`/${locale}/error`);
       } finally {
         setIsLoading(false);
       }
     };
-    fetchUserData();
-  }, [locale, params.account, router]);
 
-  const name = accountData?.name || 'Loading...';
-  const userImage = accountData?.image?.replace(/"/g, '') || '';
+    fetchUserData();
+  }, [locale, account, router]);
+
+  const name = accountData?.name || "Loading...";
+  const userImage = accountData?.image?.replace(/"/g, "") || `https://ui-avatars.com/api/?format=svg&size=128&name=${name}`;
 
   if (isLoading) {
     return (
@@ -50,35 +51,33 @@ function Page({ params }: { params: { account: string } }): JSX.Element {
         <div className="center">
           <Skeleton width="50px" height="20px" />
         </div>
-        <div>
-          <div>
-            <Skeleton width="100px" height="100px" />
-          </div>
+        <div className="center">
+          <Skeleton width="100px" height="100px" />
         </div>
       </div>
     );
   }
 
-  if (accountData) {
+  if (error) {
     return (
-      <div>
-        <div>{name}</div>
-        <div>
-          <div>
-            <Image
-              src={userImage ?  userImage : `https://ui-avatars.com/api/?format=svg&size=128&name=${name}`}
-              alt={'userImageAlt'}
-              width={100}
-              height={100}
-              priority
-            />
-          </div>
-        </div>
+      <div className="error">
+        <p>Failed to load user data. Please try again later.</p>
       </div>
     );
   }
 
-  return <></>;
+  return (
+    <div>
+      <div>{name}</div>
+      <div>
+        <Image
+          src={userImage}
+          alt="User avatar"
+          width={100}
+          height={100}
+          priority
+        />
+      </div>
+    </div>
+  );
 }
-
-export default Page;
