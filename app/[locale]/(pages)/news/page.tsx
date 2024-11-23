@@ -2,6 +2,7 @@ import { Grid, Item } from '@ui/Grid';
 import styles from '@styles/news.module.css';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { JSX } from 'react/jsx-runtime';
 
 export const metadata: Metadata = {
   title: 'News',
@@ -24,12 +25,12 @@ async function fetchFacts(): Promise<string[]> {
   return uniqueFacts;
 }
 
-export default async function NewsBlock() {
+export default async function NewsBlock(): Promise<JSX.Element> {
   const facts = await fetchFacts();
 
   return (
     <main className='center'>
-      <Grid cols={2}>
+      <Grid style={{maxWidth: `80%`}} cols={2}>
         {facts.map((fact, index) => (
           <Item key={index}>
             <div className={styles.newsBlock}>

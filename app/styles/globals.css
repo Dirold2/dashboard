@@ -2,15 +2,17 @@
 @import '../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css';
 
 :root {
-  --background: #ffffff;
-  --background-back: #c7c7c7;
-  --background-before: #dcdcdc;
-  --background-after: #b4b4b4;
-  --color: #32323c;
-  --colorHv: #d8d8d8;
+  --background: rgb(255, 255, 255);
+  --background-back: rgb(199, 199, 199);
+  --background-before: rgb(220, 220, 220);
+  --background-after: rgb(180, 180, 180);
+  --color: rgb(50, 50, 60);
+  --colorHv: rgb(220, 220, 220);
   --border-radius: 12px;
   --other-margin: 40px 2rem 0px 2rem;
   --other-padding: 35px;
+
+  --transition: 0.3s;
 
   --GitHub: #333333;
   --Discord: #7289da;
@@ -18,12 +20,12 @@
 }
 
 .light-scheme {
-  --background: #ffffff;
-  --background-back: #c7c7c7;
-  --background-before: #dcdcdc;
-  --background-after: #b4b4b4;
-  --color: #32323c;
-  --colorHv: #adadad;
+  --background: rgb(255, 255, 255);
+  --background-back: rgb(199, 199, 199);
+  --background-before: rgb(220, 220, 220);
+  --background-after: rgb(180, 180, 180);
+  --color: rgb(50, 50, 60);
+  --colorHv: rgb(220, 220, 220);
 }
 
 .system-scheme {
@@ -31,12 +33,12 @@
 }
 
 .dark-scheme {
-  --background: #1a1a1a;
-  --background-back: #333333;
-  --background-before: #262626;
-  --background-after: #666666;
-  --color: #d8d8d8;
-  --colorHv: #32323c;
+  --background: rgb(26, 26, 26);
+  --background-back: rgb(51, 51, 51);
+  --background-before: rgb(38, 38, 38);
+  --background-after: rgb(102, 102, 102);
+  --color: rgb(173, 173, 173);
+  --colorHv: rgb(38, 38, 38);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,7 +47,7 @@
     --background-back: rgb(51, 51, 51);
     --background-before: rgb(38, 38, 38);
     --background-after: rgb(102, 102, 102);
-    --color: #adadad;
+    --color: rgb(173, 173, 173);
     --colorHv: rgb(38, 38, 38);
   }
 }
@@ -82,14 +84,13 @@ body {
   scrollbar-width: thin;
   scrollbar-gutter: stable;
   scrollbar-color: var(--background-before) transparent;
-  transition: background 0.5s, color 0.5s, background-color 0.5s;
+  transition: background var(--transition), color var(--transition), background-color var(--transition);
 }
 
 body {
   background: var(--background);
   color: var(--color);
   font-family: 'Poppins', sans-serif;
-  /* transition: 0.5s; */
   overflow-x: hidden;
   min-height: 100vh;
   outline: none;
@@ -153,7 +154,7 @@ button {
   border-radius: var(--border-radius);
   background: var(--background-after);
   color: var(--color);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background var(--transition) ease-in-out, color var(--transition) ease-in-out;
 }
 
 button:hover {

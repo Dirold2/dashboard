@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import { Skeleton } from "@ui/Skeleton";
 import { useRouter } from "next/navigation";
 import { getCookie } from "@cmp/Utils";
@@ -12,7 +12,7 @@ interface AccountData {
   image: string;
 }
 
-export default function Page({ account }: { account: string }) {
+export default function Page({ account }: { account: string }): JSX.Element {
   const locale = getCookie("NEXT_LOCALE");
   const router = useRouter();
 
@@ -21,7 +21,7 @@ export default function Page({ account }: { account: string }) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const fetchUserData = async () => {
+    const fetchUserData = async (): Promise<void | Error> => {
       setIsLoading(true);
       setError(false);
       try {
@@ -61,7 +61,7 @@ export default function Page({ account }: { account: string }) {
   if (error) {
     return (
       <div className="error">
-        <p>Failed to load user data. Please try again later.</p>
+        <p>Failed to load user data. Please-in-out try again later.</p>
       </div>
     );
   }

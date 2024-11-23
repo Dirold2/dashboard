@@ -16,7 +16,7 @@ const Page: React.FC = (): JSX.Element => {
       <div>
         {t('welcome')} {session?.user?.name}!
       </div>
-      <div>
+      <div style={{margin: '20px'}}>
         <div>
           <Image
             src={userImage ?  userImage : `https://ui-avatars.com/api/?format=svg&size=128&name=${session?.user?.name}`}

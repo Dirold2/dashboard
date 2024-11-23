@@ -23,7 +23,8 @@
     }
   },
   "Search": {
-    "Search": "Search..."
+    "Search": "Search...",
+    "Login": "Login"
   },
   "Tooltip": {
     "Login": "Login",
@@ -48,7 +49,7 @@
     "Passwordlong": "Password must be at least 8 characters long",
     "Passwordsmatch": "Passwords do not match",
     "TemailAlredy": "Email address is already in use",
-    "TryAgain": "Error, please try again",
+    "TryAgain": "Error, please-in-out try again",
     "Unexpected_error": "An unexpected error has occurred.",
     "Occurred_error": "An error has occurred.",
     "OperationCompletedSuccessfully": "Operation completed successfully",
@@ -75,14 +76,5 @@
     "english": "English",
     "german": "German",
     "russian": "Russian"
-  },
-  "discord": "Discord",
-  "steam": "Steam",
-  "background-color-transitionduration-ease-0": "background-color {0} ease",
-  "repeat-auto-fill-minmax-cols-px-1fr-0": "repeat(auto-fill, minmax({0}px, 1fr))",
-  "media-min-width-breakpoint-px": "@media (min-width: {0}px)",
-  "repeat-auto-fill-minmax-cols-px-1fr": "repeat(auto-fill, minmax({0}px, 1fr))",
-  "repeat-cols-1fr": "repeat({0}, 1fr)",
-  "background-color-transitionduration-ease": "background-color {0} ease",
-  "usetooltip-must-be-used-within-a-tooltipprovider": "useTooltip must be used within a TooltipProvider"
+  }
 }

@@ -5,7 +5,7 @@
     border: var(--background-before) solid 1px;
     padding: 11px;
     cursor: pointer;
-    transition: 0.2s ease-in-out;
+    transition: var(--transition) ease-in-out;
 }
 
 .ontop:hover, .ontop::after{

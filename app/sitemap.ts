@@ -1,28 +1,28 @@
-import {MetadataRoute} from 'next';
-import {routing, getPathname} from '../i18n/routing';
- 
-// Adapt this as necessary
-const host = 'https://acme.com';
- 
+import { MetadataRoute } from 'next';
+import { getPathname } from '../i18n/routing';
+import { defaultLocale, hostName, locales, navigation } from '@config';
+
+const host = hostName;
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Adapt this as necessary
-  return [getEntry('/'), getEntry('/users')];
+  return navigation.flatMap(({ path }) =>
+    locales.map((locale) => ({
+      url: getUrl(path || '/', locale),
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'weekly',
+      priority: locale === defaultLocale ? 1.0 : 0.8,
+      alternates: {
+        languages: Object.fromEntries(
+          locales.map((altLocale) => [altLocale, getUrl(path || '/', altLocale)])
+        ),
+      },
+    }))
+  );
 }
- 
+
 type Href = Parameters<typeof getPathname>[0]['href'];
- 
-function getEntry(href: Href) {
-  return {
-    url: getUrl(href, routing.defaultLocale),
-    alternates: {
-      languages: Object.fromEntries(
-        routing.locales.map((locale) => [locale, getUrl(href, locale)])
-      )
-    }
-  };
-}
- 
-function getUrl(href: Href, locale: (typeof routing.locales)[number]) {
-  const pathname = getPathname({locale, href});
-  return host + pathname;
+
+function getUrl(href: Href, locale: typeof locales[number]): string {
+  const pathname = getPathname({ locale, href });
+  return `${host}${pathname}`;
 }

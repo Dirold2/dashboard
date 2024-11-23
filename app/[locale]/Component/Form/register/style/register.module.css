@@ -22,7 +22,7 @@
     background: none;
     border-radius: 4px;
     box-sizing: border-box;
-    transition: background 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    transition: background var(--transition) ease-in-out, border-color var(--transition) ease-in-out;
 }
 
 .inputField:hover, .inputField:active, .inputField:focus {
@@ -43,7 +43,7 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background var(--transition) ease-in-out, color var(--transition) ease-in-out;
 }
 
 .button:hover, .button:active {
@@ -60,7 +60,7 @@
     text-align: center;
     margin-top: 8px;
     cursor: pointer;
-    transition: background 0.2s linear, color 0.2s linear, border 0.2s linear;
+    transition: background var(--transition) linear, color var(--transition) linear, border var(--transition) linear;
 }
 
 .errorText:hover, .errorText:active{

@@ -23,7 +23,8 @@
     }
   },
   "Search": {
-    "Search": "Поиск..."
+    "Search": "Поиск...",
+    "Login": "Вход"
   },
   "Tooltip": {
     "Login": "Вход",

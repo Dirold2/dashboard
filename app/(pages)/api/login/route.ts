@@ -3,8 +3,8 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export async function POST(req: Request): Promise<Response> {
-    const { Login: login, Password: password } = await req.json();
+export async function POST(request: Request): Promise<Response> {
+    const { Login: login, Password: password } = await request.json();
 
     const uuidFromNickname = hashNicknameToUUID(login);
 

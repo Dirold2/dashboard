@@ -7,6 +7,9 @@ import { useState, useEffect } from 'react';
 import { JSX } from 'react/jsx-runtime';
 import { hostName } from '@config';
 
+import { Logger } from 'tslog';
+const logger = new Logger();
+
 function Order(): JSX.Element {
   const { data: session, status } = useSession();
   const [providerState, setProviderState] = useState<{
@@ -28,6 +31,7 @@ function Order(): JSX.Element {
           const data = await response.json();
           setProviderState({ providers: data, isLoading: false });
         } catch (error) {
+          logger.error("Error fetching providers:", error);
           setProviderState({ providers: [], isLoading: false });
         }
       } else {

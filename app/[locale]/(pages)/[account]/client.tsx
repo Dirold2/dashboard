@@ -1,9 +1,19 @@
 "use client";
+import { Session } from "next-auth";
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 
+export function UseAccountClient(session: Session | null): boolean {
+  const pathname = usePathname();
+  const currentPath = pathname.split("/")[2];
 
-const {data: session} = useSession()
-const pathname = usePathname();
-const currentPath = pathname.split("/")[2]; // Получаем текущую часть пути
-export const isUserPath = session?.user?.name === currentPath;
+  let isUserPath = false;
+
+  if (session) {
+    const user = session?.user;
+    if (user && typeof user.name === 'string') {
+      isUserPath = user.name === currentPath;
+    }
+  }
+
+  return isUserPath;
+}

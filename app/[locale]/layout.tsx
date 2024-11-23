@@ -48,6 +48,7 @@ const RootLayout = async ({
   params: Params;
 }): Promise<JSX.Element> => {
   const { locale } = await params
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
@@ -68,7 +69,7 @@ const RootLayout = async ({
               <div className={styles.container}>
                 <Menu locale={locale} />
                 <div className={styles.content}>
-                  <Header />
+                  <Header locale={locale} />
                   <div className={styles.main}>{children}</div>
                   <Footer />
                 </div>

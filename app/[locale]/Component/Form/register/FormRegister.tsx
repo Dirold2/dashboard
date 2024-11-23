@@ -8,6 +8,9 @@ import { UAlertContainer, AlertContainerRef } from '@ui/UAlert';
 import { getCookie } from "@cmp/Utils";
 import { JSX } from "react/jsx-runtime";
 
+import { Logger } from 'tslog';
+const logger = new Logger();
+
 export default function FormRegister(): JSX.Element {
     const t = useTranslations(``);
     const [email, setEmail] = useState("");
@@ -83,6 +86,7 @@ export default function FormRegister(): JSX.Element {
                     router.push(`/${lang}/login`);
                 }
             } catch (error) {
+                logger.error("Registration failed:", error);
                 alertContainerRef.current?.addAlert(
                     'error',
                     <span>{t("Error.TryAgain")}</span>,

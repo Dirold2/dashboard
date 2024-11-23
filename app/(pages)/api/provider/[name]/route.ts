@@ -4,18 +4,17 @@ import { prisma } from '@PrismaSingleton';
 export const dynamic = 'force-dynamic';
 const logger = new Logger();
 
-export async function GET(
-    request: Request,
-    { params }: { params: Promise<{ name: string }> },
-): Promise<Response> {
-    if (!params || !(await params).name) {
+type Params = Promise<{ name: string }>
+
+export async function GET(request: Request, segmentData: { params: Params }): Promise<Response> {
+    if (!segmentData.params || !(await segmentData.params).name) {
         logger.error('params or params.name is undefined');
         return new Response(null, { status: 400, statusText: 'Bad Request' });
     }
 
     try {
         const userId = await prisma.user.findFirst({
-            where: { name: (await params).name },
+            where: { name: (await segmentData.params).name },
             select: { id: true },
         });
 

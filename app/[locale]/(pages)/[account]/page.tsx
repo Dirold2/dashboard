@@ -6,7 +6,8 @@ import React from 'react';
 import Profile from './cmp/Profile';
 import ProfilePrisma from './cmp/ProfilePrisma';
 import { auth } from '.auth/auth';
-import { isUserPath } from './client';
+// import { UseAccountClient } from './client';
+import { JSX } from 'react/jsx-runtime';
 
 const MemoizedProfile = React.memo(Profile);
 const MemoizedProfilePrisma = React.memo(ProfilePrisma);
@@ -19,24 +20,22 @@ export default async function Page({
   params,
 }: {
   params: Promise<{ account: string }>;
-}) {
+}): Promise<JSX.Element> {
   const session = await auth()
   const account = (await params).account
-  // Передаем параметры на клиентскую сторону
+
   return (
     <main className="center">
       <Grid>
-        {/* Показываем профиль в зависимости от пути */}
         <Item>
-          {isUserPath ? (
+          {session?.user ? (
             <MemoizedProfile />
           ) : (
             <MemoizedProfilePrisma account={account} />
           )}
         </Item>
 
-        {/* Кнопки доступны только для авторизованного пользователя на его странице */}
-        {session && isUserPath && (
+        {session && (
           <Item>
             <SignOutAuthentication />
             <Order />

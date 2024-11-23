@@ -39,7 +39,7 @@
 .notificationbox div .lang {
   min-width: 45px;
   height: 45px;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background var(--transition) ease-in-out, color var(--transition) ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,7 +64,7 @@
 
   opacity: 0;
   transform: scale(0.95);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity var(--transition) ease-in-out, transform var(--transition) ease-in-out;
 }
 
 .notificationbox div .date .calendarContainer.visible,
@@ -79,7 +79,7 @@
   position: relative;
   width: 100%;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background var(--transition) ease-in-out, color var(--transition) ease-in-out;
   user-select: none;
 }
 
@@ -106,7 +106,7 @@
   background: var(--background-after);
   color: var(--background-before);
   border-radius: var(--border-radius);
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: background var(--transition) ease-in-out, color var(--transition) ease-in-out;
   padding: 1px;
 }
 

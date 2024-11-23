@@ -39,12 +39,15 @@ const ONTop: React.FC<ONTopProps> = ({ position = 'bottomRight' }) => {
 
     return (
         <div
-            aria-hidden={!isHidden}
             role="button"
             tabIndex={isHidden ? 0 : -1}
             className={positions[position]}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            style={{ transform: `translateY(${translateY})`, opacity: isHidden ? '1' : '0', cursor: isHidden ? 'pointer' : 'default' }}
+            style={{
+                transform: `translateY(${translateY})`,
+                opacity: isHidden ? '1' : '0',
+                cursor: isHidden ? 'pointer' : 'default'
+            }}
         >
             <i className="bi bi-arrow-up" />
         </div>

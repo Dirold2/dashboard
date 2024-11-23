@@ -14,8 +14,8 @@
   visibility: hidden;
   white-space: nowrap;
   pointer-events: none;
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out,
-    visibility 0s linear 0.2s;
+  transition: opacity var(--transition) ease-in-out, transform var(--transition) ease-in-out,
+    visibility 0s linear var(--transition);
 }
 
 .tooltip::before {
@@ -87,6 +87,6 @@
 .tooltip_visible {
   opacity: 0.9;
   visibility: visible;
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out,
+  transition: opacity var(--transition) ease-in-out, transform var(--transition) ease-in-out,
     visibility 0s linear 0s;
 }

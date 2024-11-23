@@ -5,29 +5,23 @@ import styles from './styles/grid.module.css';
 
 // Тип для расширенных стилей
 type ExtendedCSSProperties = React.CSSProperties & {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any; // Разрешаем медиазапросы
-};
-
-// Тип для адаптивного управления колонками
-type ResponsiveCols = {
-  [breakpoint: string]: number;
 };
 
 // Тип для Grid
 interface GridProps {
-  /** Дочерние элементы для отображения в сетке */
-  children: ReactNode;
-  /** Количество колонок */
+  /** @param children Дочерние элементы для отображения в сетке */
+  children: React.ReactNode;
+  /** @param cols Количество колонок */
   cols?: number;
-  /** Отступы между элементами */
+  /** @param gap Отступы между элементами */
   gap?: string;
-  /** Направление расположения элементов */
+  /** @param flow Направление расположения элементов */
   flow?: `row` | `row dense` | `column` | `column dense` | `dense`;
-  /** Адаптивное управление количеством колонок */
-  responsiveCols?: ResponsiveCols;
-  /** Дополнительный CSS-класс */
+  /** @param className Дополнительный CSS-класс */
   className?: string;
-  /** Инлайновые стили */
+  /** @param style Инлайновые стили */
   style?: React.CSSProperties;
 }
 
@@ -40,7 +34,6 @@ const useGridStyles = ({
   cols = 1,
   gap = '20px',
   flow = 'row dense',
-  responsiveCols = { 600: 6, 900: 8, 1200: 12 },
 }: Omit<GridProps, 'children' | 'className' | 'style'>): ExtendedCSSProperties =>
   useMemo(() => {
     const baseStyle: ExtendedCSSProperties = {
@@ -50,32 +43,28 @@ const useGridStyles = ({
       gridAutoFlow: flow,
     };
 
-    // Добавление медиазапросов
-    Object.entries(responsiveCols).forEach(([breakpoint, cols]) => {
-      const mediaQuery = `@media (minWidth: ${breakpoint}px)`;
-      baseStyle[mediaQuery] = {
-        gridTemplateColumns: `repeat(${cols}, 1fr)`,
-      };
-    });
-
     return baseStyle;
-  }, [cols, gap, flow, responsiveCols]);
+  }, [cols, gap, flow]);
 
 /**
  * Компонент `Grid`
- * @param {GridProps} props Свойства компонента
- * @returns {JSX.Element} JSX для сетки
+ * @param children Дочерние элементы для отображения в сетке
+ * @param cols Количество колонок
+ * @param gap Отступы между элементами
+ * @param flow Направление расположения элементов
+ * @param responsiveCols Адаптивное управление количеством колонок
+ * @param className Дополнительный CSS-класс
+ * @param style Инлайновые стили
  */
 export const Grid = ({
   children,
   cols = 1,
   gap = '20px',
   flow = 'row dense',
-  responsiveCols = { 600: 6, 900: 8, 1200: 12 },
   className = '',
   style = {},
 }: GridProps): JSX.Element => {
-  const gridStyle = useGridStyles({ cols, gap, flow, responsiveCols });
+  const gridStyle = useGridStyles({ cols, gap, flow });
 
   return (
     <div className={`${className}`} style={{ ...gridStyle, ...style }}>
@@ -86,22 +75,25 @@ export const Grid = ({
 
 // Типы для Item
 interface ItemProps {
-  /** Дочерние элементы для отображения внутри элемента сетки */
+  /** @param children Дочерние элементы для отображения внутри элемента сетки */
   children: ReactNode;
-  /** Количество колонок, занимаемых элементом */
+  /** @param colSpan Количество колонок, занимаемых элементом */
   colSpan?: number;
-  /** Количество строк, занимаемых элементом */
+  /** @param rowSpan Количество строк, занимаемых элементом */
   rowSpan?: number;
-  /** Дополнительный CSS-класс */
+  /** @param className Дополнительный CSS-класс */
   className?: string;
-  /** Инлайновые стили */
+  /** @param style Инлайновые стили */
   style?: React.CSSProperties;
 }
 
 /**
  * Компонент `Item`
- * @param {ItemProps} props Свойства компонента
- * @returns {JSX.Element} JSX для элемента сетки
+ * @param children Дочерние элементы для отображения внутри элемента сетки
+ * @param colSpan Количество колонок, занимаемых элементом
+ * @param rowSpan Количество строк, занимаемых элементом
+ * @param className Дополнительный CSS-класс
+ * @param style Инлайновые стили
  */
 export const Item = ({
   children,
@@ -113,6 +105,7 @@ export const Item = ({
   const itemStyle: React.CSSProperties = {
     gridColumn: colSpan ? `span ${colSpan}` : undefined,
     gridRow: rowSpan ? `span ${rowSpan}` : undefined,
+    padding: '1em',
     ...style,
   };
 

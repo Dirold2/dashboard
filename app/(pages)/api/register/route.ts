@@ -1,6 +1,9 @@
 import { PrismaClient } from '@prisma/client';
 import crypto from 'crypto';
 
+import { Logger } from 'tslog';
+const logger = new Logger();
+
 const prisma = new PrismaClient();
 
 export async function POST(request: Request): Promise<Response> {
@@ -28,6 +31,7 @@ export async function POST(request: Request): Promise<Response> {
         
         return new Response(JSON.stringify({ email, name }), { status: 200 });
     } catch (error) {
-        return new Response("An error occurred during registration", { status: 500 });
+        logger.error('Error fetching users:', error);
+        return new Response(null, { status: 500, statusText: 'Internal Server Error' });
     }
 }

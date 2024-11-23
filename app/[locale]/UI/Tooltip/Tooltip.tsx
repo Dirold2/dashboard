@@ -6,6 +6,7 @@ interface TooltipProps {
   content: string;
   children: JSX.Element;
   position?: 'top' | 'right' | 'bottom' | 'left';
+  translation?: boolean,
   delay?: number;
   visible?: boolean;
 }
@@ -14,10 +15,9 @@ const Tooltip: React.FC<TooltipProps> = (props) => {
   const t = useTranslations(`Tooltip`);
   let translatedContent: string;
 
-  try {
+  if (props.translation) {
     translatedContent = t(props.content);
-  } catch {
-    // Если перевод отсутствует, используем оригинальный контент
+  } else {
     translatedContent = props.content;
   }
 

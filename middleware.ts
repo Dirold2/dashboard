@@ -5,7 +5,7 @@ import { locales } from '@config';
 
 const i18nMiddleware = createMiddleware(routing);
 
-export default function middleware(request: NextRequest) {
+export default function middleware(request: NextRequest): NextResponse {
   const { pathname } = request.nextUrl;
 
   // Проверяем, является ли путь относящимся к локализации

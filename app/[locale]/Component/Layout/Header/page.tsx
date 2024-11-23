@@ -1,71 +1,73 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import styles from './style/header.module.css';
-import SearchInput from './cmp/SearchInput';
-import SearchResults from './cmp/SearchResults';
-import { JSX } from 'react/jsx-runtime';
-import 'dotenv/config'
-require('dotenv').config()
+import React, { useState, useEffect, useCallback, JSX } from "react";
+import styles from "./style/header.module.css";
+import SearchInput from "./cmp/SearchInput";
+import SearchResults from "./cmp/SearchResults";
+import { hostName } from "@config";
 
-// interface UserData {
-//   first_name: string;
-//   last_name: string;
-// }
+import { Logger } from "tslog";
+const logger = new Logger();
 
-function Header(): JSX.Element {
-  const [searchResults, setSearchResults] = useState([]);
+interface SearchResult {
+  id: number;
+  name: string;
+  email: string;
+  image: string | null;
+  first_name: string;
+  last_name: string;
+}
+
+function Header({ locale }: {locale: string}): JSX.Element {
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showStyleDropdown, setShowStyleDropdown] = useState(false);
-  const [searchSuggestions, setSearchSuggestions] = useState<string[]>([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [hostNames, sethostNames] = useState(hostName)
 
-  useEffect(() => {
-    const handleSearch = async (searchTerm: string): Promise<void> => {
-      if (!searchTerm) {
+  const debounce = useCallback((callback: () => void, delay: number) => {
+    let timeout: NodeJS.Timeout;
+    return (): void => {
+      clearTimeout(timeout);
+      timeout = setTimeout(callback, delay);
+    };
+  }, []);
+
+  const handleSearch = useCallback(
+    async (term: string) => {
+      if (!term.trim()) {
         setSearchResults([]);
-        setSearchSuggestions([]);
         setShowDropdown(false);
         setShowStyleDropdown(false);
         return;
       }
-      try {
-        const response = await fetch(
-          `/api/account/all`,
-        );
-        const data = await response.json();
-        // const searchTermWords = searchTerm.trim().toLowerCase().split(/\s+/);
-        // const filteredData = data.data.filter(
-        //   ({ first_name, last_name }: UserData) => {
-        //     return searchTermWords.some(
-        //       (word: string) =>
-        //         first_name.toLowerCase().includes(word) ||
-        //         last_name.toLowerCase().includes(word),
-        //     );
-        //   },
-        // );
-        setSearchResults(data);
-        setSearchSuggestions(
-          data.map(
-            ({ name }: {name: string}) =>
-              `${name}`,
-          ),
-        );
-        setShowDropdown(!!data.length);
-        setShowStyleDropdown(!!data.length);
-      } catch (error) {
-        false
-      }
-    };
 
-    handleSearch(searchTerm);
-  }, [searchTerm]);
+      try {
+        const response = await fetch(`/api/account/all`);
+        if (!response.ok) throw new Error("Failed to fetch data");
+
+        const data: SearchResult[] = await response.json();
+        setSearchResults(data);
+        setShowDropdown(data.length > 0);
+        setShowStyleDropdown(data.length > 0);
+        sethostNames(hostName)
+      } catch (error) {
+        logger.error("Error fetching account data:", error);
+        setSearchResults([]);
+        setShowDropdown(false);
+        setShowStyleDropdown(false);
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    debounce(() => handleSearch(searchTerm), 300)();
+  }, [searchTerm, handleSearch, debounce]);
 
   const handleCloseDropdown = (): void => {
-    setTimeout(() => {
-      setShowDropdown(false);
-      setShowStyleDropdown(false);
-    }, 150);
+    setShowDropdown(false);
+    setShowStyleDropdown(false);
   };
 
   return (
@@ -76,17 +78,15 @@ function Header(): JSX.Element {
         setSearchTerm={setSearchTerm}
       />
       <SearchResults
-        onSearch={setSearchTerm}
         searchResults={searchResults}
         showDropdown={showDropdown}
         showStyleDropdown={showStyleDropdown}
+        hostName={hostNames}
+        locale={locale}
         onClose={handleCloseDropdown}
-        suggestions={searchSuggestions}
-        setSearchTerm={setSearchTerm}
-        setSearchSuggestions={setSearchSuggestions}
       />
     </span>
   );
-}
+};
 
 export default Header;

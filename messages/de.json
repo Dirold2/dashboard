@@ -23,7 +23,8 @@
     }
   },
   "Search": {
-    "Search": "Suche..."
+    "Search": "Suche...",
+    "Login": "Anmelden"
   },
   "Tooltip": {
     "Login": "Anmelden",
@@ -75,14 +76,5 @@
     "english": "Englisch",
     "german": "Deutsch",
     "russian": "Russisch"
-  },
-  "discord": "Discord",
-  "steam": "Steam",
-  "background-color-transitionduration-ease-0": "Hintergrundfarbe {0} ease",
-  "repeat-auto-fill-minmax-cols-px-1fr-0": "repeat(auto-fill, minmax({0}px, 1fr))",
-  "media-min-width-breakpoint-px": "@media (min-width: {0}px)",
-  "repeat-auto-fill-minmax-cols-px-1fr": "repeat(auto-fill, minmax({0}px, 1fr))",
-  "repeat-cols-1fr": "repeat({0}, 1fr)",
-  "background-color-transitionduration-ease": "Hintergrundfarbe {0} ease",
-  "usetooltip-must-be-used-within-a-tooltipprovider": "useTooltip muss innerhalb eines TooltipProvider verwendet werden"
+  }
 }
