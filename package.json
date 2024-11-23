@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "next build",
-    "dev": "NODE_OPTIONS='--inspect' next dev --turbo -p 27060",
+    "dev": "next dev --turbo -p 27060",
     "lint": "next lint",
     "start": "next start -p 27060"
   },
