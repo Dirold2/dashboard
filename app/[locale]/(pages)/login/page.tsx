@@ -1,11 +1,12 @@
+import { redirect } from 'next/navigation';
+import { JSX } from 'react/jsx-runtime';
+
 // server.tsx
-import { auth } from ".auth/auth"
-import { redirect } from "next/navigation";
-import { JSX } from "react/jsx-runtime";
-import ClientLogin from "./client";
+import { auth } from '.auth/auth';
+import ClientLogin from './client';
 
 export const metadata = {
-  title: "Login",
+  title: 'Login',
 };
 
 async function ServerLogin({
@@ -13,17 +14,15 @@ async function ServerLogin({
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<JSX.Element> {
-  const session = await auth()
+  const session = await auth();
 
-  const { locale } = await params
+  const { locale } = await params;
 
   if (session?.user) {
     redirect(`/${locale}/${session.user.name}`);
   }
 
-  return (
-    <ClientLogin />
-  );
-};
+  return <ClientLogin />;
+}
 
 export default ServerLogin;

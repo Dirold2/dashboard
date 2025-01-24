@@ -1,10 +1,10 @@
-"use client";
-import { Session } from "next-auth";
-import { usePathname } from "next/navigation";
+'use client';
+import { Session } from 'next-auth';
+import { usePathname } from 'next/navigation';
 
 export function UseAccountClient(session: Session | null): boolean {
   const pathname = usePathname();
-  const currentPath = pathname.split("/")[2];
+  const currentPath = pathname.split('/')[2];
 
   let isUserPath = false;
 

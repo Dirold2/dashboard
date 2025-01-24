@@ -1,5 +1,5 @@
-import { JSX } from "react/jsx-runtime";
+import { JSX } from 'react/jsx-runtime';
 
 export default function Loading(): JSX.Element {
-	return <main className="center">Loading...</main>
+  return <main className="center">Loading...</main>;
 }

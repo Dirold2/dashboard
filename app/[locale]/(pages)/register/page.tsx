@@ -1,18 +1,17 @@
-import { FormRegister } from "@cmp/Form";
-import { Metadata } from "next";
-import { JSX } from "react/jsx-runtime";
+import { FormRegister } from '@component/Form';
+import { Metadata } from 'next';
+import { JSX } from 'react/jsx-runtime';
 
 export const metadata: Metadata = {
-    title: 'Register',
+  title: 'Register',
 };
 
 const RegisterPage = (): JSX.Element => {
-
-    return (
-        <main>
-            <FormRegister />
-        </main>
-    );
+  return (
+    <main>
+      <FormRegister />
+    </main>
+  );
 };
 
 export default RegisterPage;

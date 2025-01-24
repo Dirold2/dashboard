@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
-import Link from 'next/link'
-import { JSX } from 'react/jsx-runtime'
- 
+import Link from 'next/link';
+import { JSX } from 'react/jsx-runtime';
+
 export const metadata: Metadata = {
   title: 'Not Found',
 };
@@ -15,5 +15,5 @@ export default async function NotFound(): Promise<JSX.Element> {
         View <Link href="/blog">all posts</Link>
       </p>
     </div>
-  )
+  );
 }

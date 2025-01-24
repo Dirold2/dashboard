@@ -1,11 +1,12 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { JSX, useEffect, useState } from "react";
-import { Skeleton } from "@ui/Skeleton";
-import { useRouter } from "next/navigation";
-import { getCookie } from "@cmp/Utils";
-import { hostName } from "@config";
+import { getCookie } from '@component/Utils';
+import { Skeleton } from '@ui/Skeleton';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { JSX, useEffect, useState } from 'react';
+
+import { hostName } from '@config';
 
 interface AccountData {
   name: string;
@@ -13,7 +14,7 @@ interface AccountData {
 }
 
 export default function Page({ account }: { account: string }): JSX.Element {
-  const locale = getCookie("NEXT_LOCALE");
+  const locale = getCookie('NEXT_LOCALE');
   const router = useRouter();
 
   const [accountData, setAccountData] = useState<AccountData | null>(null);
@@ -27,7 +28,7 @@ export default function Page({ account }: { account: string }): JSX.Element {
       try {
         const response = await fetch(`${hostName}/api/account/${account}`);
         if (!response.ok) {
-          throw new Error("Failed to fetch user data");
+          throw new Error('Failed to fetch user data');
         }
         const data = await response.json();
         setAccountData(data);
@@ -42,8 +43,10 @@ export default function Page({ account }: { account: string }): JSX.Element {
     fetchUserData();
   }, [locale, account, router]);
 
-  const name = accountData?.name || "Loading...";
-  const userImage = accountData?.image?.replace(/"/g, "") || `https://ui-avatars.com/api/?format=svg&size=128&name=${name}`;
+  const name = accountData?.name || 'Loading...';
+  const userImage =
+    accountData?.image?.replace(/"/g, '') ||
+    `https://ui-avatars.com/api/?format=svg&size=128&name=${name}`;
 
   if (isLoading) {
     return (

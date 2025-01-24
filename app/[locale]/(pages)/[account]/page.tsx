@@ -1,13 +1,14 @@
-import { Metadata } from 'next';
 import { SignOutAuthentication } from '@ui/Button';
 import { Grid, Item } from '@ui/Grid';
-import Order from './cmp/Button';
+import { Metadata } from 'next';
+// import Order from './cmp/Button';
 import React from 'react';
-import Profile from './cmp/Profile';
-import ProfilePrisma from './cmp/ProfilePrisma';
-import { auth } from '.auth/auth';
 // import { UseAccountClient } from './client';
 import { JSX } from 'react/jsx-runtime';
+
+import { auth } from '.auth/auth';
+import Profile from './cmp/Profile';
+import ProfilePrisma from './cmp/ProfilePrisma';
 
 const MemoizedProfile = React.memo(Profile);
 const MemoizedProfilePrisma = React.memo(ProfilePrisma);
@@ -21,8 +22,8 @@ export default async function Page({
 }: {
   params: Promise<{ account: string }>;
 }): Promise<JSX.Element> {
-  const session = await auth()
-  const account = (await params).account
+  const session = await auth();
+  const account = (await params).account;
 
   return (
     <main className="center">
@@ -38,7 +39,7 @@ export default async function Page({
         {session && (
           <Item>
             <SignOutAuthentication />
-            <Order />
+            {/* <Order /> */}
           </Item>
         )}
       </Grid>

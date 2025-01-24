@@ -1,0 +1,15 @@
+.footer {
+  background: var(--background-before);
+  margin: 0px 1%;
+  margin-top: 40px;
+  border-radius: var(--border-radius);
+  padding: 10px 35px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    margin: 0px 4%;
+    margin-top: 20px;
+  }
+}

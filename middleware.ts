@@ -6,17 +6,17 @@ import { locales } from '@config';
 const i18nMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest): NextResponse {
-  const { pathname } = request.nextUrl;
+	const { pathname } = request.nextUrl;
 
-  // Проверяем, является ли путь относящимся к локализации
-  const isLocalePath = locales.some(
-    (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
-  );
+	// Проверяем, является ли путь относящимся к локализации
+	const isLocalePath = locales.some(
+		(locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
+	);
 
-  if (pathname === '/' || isLocalePath) {
-    return i18nMiddleware(request);
-  }
+	if (pathname === '/' || isLocalePath) {
+		return i18nMiddleware(request);
+	}
 
-  // Если путь не относится к локализации, просто продолжаем обработку
-  return NextResponse.next();
+	// Если путь не относится к локализации, просто продолжаем обработку
+	return NextResponse.next();
 }

@@ -1,7 +1,8 @@
-import React from 'react';
 import { Grid, Item } from '@ui/Grid';
-import ld from '@styles/loader.module.css';
 import { Metadata } from 'next';
+import React from 'react';
+
+import ld from '@styles/loader.module.scss';
 
 export const metadata: Metadata = {
   title: 'News',

@@ -1,21 +1,25 @@
+// Style
+import '@styles/globals.scss';
+
+import {
+  AlertProvider,
+  AuthProvider,
+  NotificationProvider,
+} from '@component/Context';
+import { Footer, Header, Menu, Sidebar } from '@component/Layout';
+import { ONTop } from '@ui/ONTop';
+import { routing } from 'i18n/routing';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 // Hook
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
-import { NextIntlClientProvider } from 'next-intl';
-
-// Style
-import '@styles/globals.css';
-import styles from '@styles/Layout.module.css';
+import { notFound } from 'next/navigation';
+import { JSX } from 'react/jsx-runtime';
 
 // Component
 import { siteTitle } from '@config';
-import { AuthProvider, NotificationProvider } from '@cmp/Context';
-import { Footer, Header, Menu, Sidebar } from '@cmp/Layout';
-import { ONTop } from '@ui/ONTop';
-import { routing } from 'i18n/routing';
-import { notFound } from 'next/navigation';
-import { getMessages } from 'next-intl/server';
-import { JSX } from 'react/jsx-runtime';
+import styles from '@styles/Layout.module.scss';
 
 type TitleType = {
   template: string;
@@ -38,7 +42,7 @@ const inter = Inter({
   display: 'swap',
 });
 
-type Params = Promise<{ locale: string }>
+type Params = Promise<{ locale: string }>;
 
 const RootLayout = async ({
   children,
@@ -47,14 +51,14 @@ const RootLayout = async ({
   children: JSX.Element | null | undefined;
   params: Params;
 }): Promise<JSX.Element> => {
-  const { locale } = await params
+  const { locale } = await params;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
 
   const messages = await getMessages();
-  
+
   return (
     <html lang={locale} className={inter.className}>
       <Head>
@@ -66,22 +70,24 @@ const RootLayout = async ({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AuthProvider>
             <NotificationProvider>
-              <div className={styles.container}>
-                <Menu locale={locale} />
-                <div className={styles.content}>
-                  <Header locale={locale} />
-                  <div className={styles.main}>{children}</div>
-                  <Footer />
+              <AlertProvider>
+                <div className={styles.container}>
+                  <Menu params={params} />
+                  <div className={styles.content}>
+                    <Header params={params} />
+                    <div className={styles.main}>{children}</div>
+                    <Footer params={params} />
+                  </div>
+                  <Sidebar />
                 </div>
-                <Sidebar />
-              </div>
-              <ONTop />
+                <ONTop />
+              </AlertProvider>
             </NotificationProvider>
           </AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>
   );
-}
+};
 
 export default RootLayout;

@@ -1,9 +1,10 @@
 // client.tsx
-"use client";
+'use client';
 
-import { JSX, useEffect } from "react";
-import { useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
+import { JSX, useEffect } from 'react';
+
 import Client from './cmp/Client';
 
 const ClientLogin = (): JSX.Element => {

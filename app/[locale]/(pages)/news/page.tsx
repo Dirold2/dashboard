@@ -1,8 +1,9 @@
 import { Grid, Item } from '@ui/Grid';
-import styles from '@styles/news.module.css';
-import Image from 'next/image';
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { JSX } from 'react/jsx-runtime';
+
+import styles from '@styles/news.module.scss';
 
 export const metadata: Metadata = {
   title: 'News',

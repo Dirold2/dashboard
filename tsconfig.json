@@ -20,11 +20,11 @@
       "incremental": true,
       "baseUrl": ".",
       "paths": {
-        "@cmp/*": [
-          "app/[locale]/Component/*"
+        "@component/*": [
+          "./app/[locale]/component/*"
         ],
         "@ui/*": [
-          "app/[locale]/UI/*"
+          "./app/[locale]/ui/*"
         ],
         "@styles/*": [
           "./app/styles/*"

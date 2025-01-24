@@ -1,6 +1,10 @@
-import { getSecondPathPart } from '@cmp/Utils';
+import { getSecondPathPart } from '@component/Utils';
 
-export async function PageServer({ pathname }: { pathname: string }): Promise<{ path: string }> {
+export async function PageServer({
+  pathname,
+}: {
+  pathname: string;
+}): Promise<{ path: string }> {
   const path = getSecondPathPart(pathname);
   return { path };
 }

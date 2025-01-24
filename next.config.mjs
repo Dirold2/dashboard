@@ -3,6 +3,10 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  sassOptions: {
+    additionalData: `$var: red;`,
+    implementation: 'sass-embedded',
+  },
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -11,7 +15,9 @@ const nextConfig = {
       { protocol: 'https', hostname: 'cdn.discordapp.com', pathname: '**' },
       { protocol: 'https', hostname: 'placehold.co', pathname: '**' },
       { protocol: 'https', hostname: 'reqres.in', pathname: '**' },
-      { protocol: 'https', hostname: 'ui-avatars.com', pathname: '**'}
+      { protocol: 'https', hostname: 'ui-avatars.com', pathname: '**'},
+      { protocol: 'https', hostname: 'authjs.dev', pathname: '**'},
+      { protocol: 'https', hostname: 'avatars.yandex.net', pathname: '**'}
     ],
     dangerouslyAllowSVG: true,
     minimumCacheTTL: 86400,

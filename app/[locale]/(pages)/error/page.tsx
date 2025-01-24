@@ -1,9 +1,9 @@
-import React from 'react';
 import { Grid } from '@ui/Grid';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { JSX } from 'react/jsx-runtime';
 import { Metadata } from 'next';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import React from 'react';
+import { JSX } from 'react/jsx-runtime';
 
 export const metadata: Metadata = {
   title: 'Error',

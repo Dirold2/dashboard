@@ -1,13 +1,13 @@
 'use client';
 
-import { GithubAuthentication, DiscordAuthentication } from '@ui/Button';
+import { DiscordAuthentication, GithubAuthentication } from '@ui/Button';
 import { useSession } from 'next-auth/react';
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { JSX } from 'react/jsx-runtime';
+import { Logger } from 'tslog';
+
 import { hostName } from '@config';
 
-import { Logger } from 'tslog';
 const logger = new Logger();
 
 function Order(): JSX.Element {
@@ -31,7 +31,7 @@ function Order(): JSX.Element {
           const data = await response.json();
           setProviderState({ providers: data, isLoading: false });
         } catch (error) {
-          logger.error("Error fetching providers:", error);
+          logger.error('Error fetching providers:', error);
           setProviderState({ providers: [], isLoading: false });
         }
       } else {
